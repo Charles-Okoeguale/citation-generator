@@ -102,3 +102,91 @@ export interface FormConfig {
   sections: Record<string, FormSection>; // Now properly typed
   order: string[];
 }
+
+export interface FormatPreferences {
+  defaultFormat: CitationFormat;
+  showPreview: boolean;
+  autoSave: boolean;
+}
+
+
+export type StyleField = 
+  | 'author'
+  | 'title'
+  | 'container-title'
+  | 'issued'
+  | 'page'
+  | 'volume'
+  | 'issue'
+  | 'DOI'
+  | 'URL'
+  | 'ISBN'
+  | 'ISSN'
+  | 'publisher'
+  | 'publisher-place'
+  | 'edition';
+
+export interface StyleVersion {
+  major: number;
+  minor: number;
+  patch: number;
+  toString(): string;
+}
+
+export interface StyleExample {
+  input: Record<string, any>;
+  output: {
+    bibliography: string;
+    inText: string;
+  };
+}
+
+export interface EnhancedStyleMetadata {
+  id: string;
+  title: string;
+  titleShort?: string;
+  version: StyleVersion;
+  updated: string;
+  categories: string[];
+  description: string;
+  example: StyleExample;
+  fields: StyleField[];
+  dependencies?: string[];
+  isDeprecated?: boolean;
+  defaultLocale?: string;
+  supportedLocales?: string[];
+  documentationUrl?: string;
+}
+
+export interface StyleValidationResult {
+  isValid: boolean;
+  errors: StyleValidationError[];
+  warnings: StyleValidationWarning[];
+}
+
+export interface StyleValidationError {
+  code: string;
+  message: string;
+  field?: string;
+}
+
+export interface StyleValidationWarning {
+  code: string;
+  message: string;
+  suggestion?: string;
+}
+
+export interface StyleUpdateInfo {
+  hasUpdate: boolean;
+  currentVersion: StyleVersion;
+  latestVersion?: StyleVersion;
+  changelogUrl?: string;
+}
+
+export interface StyleCategory {
+  id: string;
+  name: string;
+  description: string;
+  count: number;
+  subcategories?: StyleCategory[];
+}

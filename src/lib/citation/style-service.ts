@@ -1,126 +1,450 @@
-import { Cite } from '@citation-js/core'
+import { Cite } from '@citation-js/core';
+import '@citation-js/plugin-csl';
+import type {
+  EnhancedStyleMetadata,
+  StyleCategory,
+  StyleValidationResult,
+  StyleVersion,
+  StyleExample,
+  StyleValidationError,
+  StyleValidationWarning,
+  StyleUpdateInfo,
+  StyleField
+} from './types';
 
-interface StyleMetadata {
-  id: string;
-  title: string;
-  category: string;
-  updated: string;
-}
-
-interface StyleCategory {
-  name: string;
-  styles: StyleMetadata[];
-}
-
-class StyleService {
-  private styles: Map<string, StyleMetadata> = new Map();
+class UnifiedStyleService {
+  private static instance: UnifiedStyleService;
+  private styles: Map<string, EnhancedStyleMetadata> = new Map();
+  private styleCache: Map<string, any> = new Map();
   private categories: StyleCategory[] = [];
   private initialized: boolean = false;
+  private lastUpdateCheck: Date | null = null;
 
-  constructor() {
-    this.initializeStyles();
+  private constructor() {}
+
+  static getInstance(): UnifiedStyleService {
+    if (!UnifiedStyleService.instance) {
+      UnifiedStyleService.instance = new UnifiedStyleService();
+    }
+    return UnifiedStyleService.instance;
   }
 
-  private async initializeStyles() {
+  async initialize(): Promise<void> {
+    if (this.initialized) return;
+
     try {
-      // Fetch styles from Citation.js
+      // Load all available styles from Citation.js
       const availableStyles = await Cite.plugins.config.get('@csl/styles');
       
-      // Create categories
-      const categorizedStyles: Record<string, StyleMetadata[]> = {
-        'General': [],
-        'Science': [],
-        'Humanities': [],
-        'Social Sciences': [],
-        'Engineering': [],
-        'Medicine': [],
-        'Law': [],
-        'Other': []
-      };
-
       // Process each style
-      Object.entries(availableStyles).forEach(([id, data]: [string, any]) => {
-        const metadata: StyleMetadata = {
-          id,
-          title: data.title || id,
-          category: this.determineCategory(data.fields || []),
-          updated: data.updated || 'Unknown'
-        };
+      await Promise.all(
+        Object.entries(availableStyles).map(async ([id, data]) => {
+          const metadata = await this.extractStyleMetadata(id, data);
+          this.styles.set(id, metadata);
+        })
+      );
 
-        this.styles.set(id, metadata);
-        categorizedStyles[metadata.category].push(metadata);
-      });
-
-      // Convert to array format and sort
-      this.categories = Object.entries(categorizedStyles).map(([name, styles]) => ({
-        name,
-        styles: styles.sort((a, b) => a.title.localeCompare(b.title))
-      }));
-
+      // Generate categories
+      this.categories = this.generateCategories();
+      
       this.initialized = true;
     } catch (error) {
       console.error('Failed to initialize citation styles:', error);
-      throw new Error('Failed to load citation styles');
+      throw new Error('Style initialization failed');
     }
   }
 
-  private determineCategory(fields: string[]): string {
-    // Logic to determine style category based on fields
-    if (fields.includes('science')) return 'Science';
-    if (fields.includes('medicine')) return 'Medicine';
-    if (fields.includes('law')) return 'Law';
-    if (fields.includes('humanities')) return 'Humanities';
-    if (fields.includes('engineering')) return 'Engineering';
-    if (fields.includes('social-science')) return 'Social Sciences';
-    return 'Other';
+  private async extractStyleMetadata(id: string, data: any): Promise<EnhancedStyleMetadata> {
+    const style = await this.loadStyle(id);
+    const version = this.parseVersion(data.version || '1.0.0');
+    const example = await this.generateStyleExample(id);
+
+    return {
+      id,
+      title: data.title || id,
+      titleShort: data.titleShort,
+      version,
+      updated: data.updated || new Date().toISOString(),
+      categories: this.determineCategories(data, style),
+      description: this.generateDescription(data, style),
+      example,
+      fields: this.extractRequiredFields(style),
+      dependencies: data.dependencies || [],
+      isDeprecated: data.isDeprecated || false,
+      defaultLocale: data.defaultLocale || 'en-US',
+      supportedLocales: data.supportedLocales || ['en-US'],
+      documentationUrl: this.getDocumentationUrl(id)
+    };
   }
 
-  async getStyle(styleId: string): Promise<any> {
-    if (!this.initialized) {
-      await this.initializeStyles();
+  private async loadStyle(styleId: string): Promise<any> {
+    if (this.styleCache.has(styleId)) {
+      return this.styleCache.get(styleId);
     }
 
+    try {
+      const style = await Cite.plugins.config.get('@csl/styles')[styleId];
+      if (!style) {
+        throw new Error(`Style ${styleId} not found`);
+      }
+      this.styleCache.set(styleId, style);
+      return style;
+    } catch (error) {
+      console.error(`Failed to load style ${styleId}:`, error);
+      throw error;
+    }
+  }
+
+  private parseVersion(versionString: string): StyleVersion {
+    const [major = 1, minor = 0, patch = 0] = versionString.split('.').map(Number);
+    return {
+      major,
+      minor,
+      patch,
+      toString: () => `${major}.${minor}.${patch}`
+    };
+  }
+
+  private async generateStyleExample(styleId: string): Promise<StyleExample> {
+    const sampleInput = {
+      type: 'article-journal',
+      title: 'The Evolution of Citation Styles',
+      author: [{ given: 'John', family: 'Smith' }],
+      'container-title': 'Journal of Documentation',
+      volume: '45',
+      issue: '2',
+      page: '123-145',
+      issued: { 'date-parts': [[2023]] }
+    };
+
+    const cite = new Cite(sampleInput);
+    
+    return {
+      input: sampleInput,
+      output: {
+        bibliography: cite.format('bibliography', {
+          template: styleId,
+          format: 'text',
+          lang: 'en-US'
+        }),
+        inText: cite.format('citation', {
+          template: styleId,
+          lang: 'en-US'
+        })
+      }
+    };
+  }
+
+  private determineCategories(data: any, style: any): string[] {
+    const categories = new Set<string>();
+    
+    // Add primary category
+    if (data.field) categories.add(this.normalizeCategory(data.field));
+    
+    // Add categories based on style analysis
+    if (style.citation?.['citation-format'] === 'author-date') {
+      categories.add('author-date');
+    }
+    if (style.citation?.['citation-format'] === 'numeric') {
+      categories.add('numeric');
+    }
+    if (style.citation?.['citation-format'] === 'note') {
+      categories.add('note');
+    }
+
+    // Add discipline-specific categories
+    if (style.info?.disciplines) {
+      style.info.disciplines.forEach((discipline: string) => {
+        categories.add(this.normalizeCategory(discipline));
+      });
+    }
+
+    return Array.from(categories);
+  }
+
+  private normalizeCategory(category: string): string {
+    return category.toLowerCase().replace(/\s+/g, '-');
+  }
+
+  private generateDescription(data: any, style: any): string {
+    const parts = [];
+    
+    if (data.title) {
+      parts.push(`${data.title} citation style`);
+    }
+    
+    if (style.citation?.['citation-format']) {
+      parts.push(`uses ${style.citation['citation-format']} format`);
+    }
+    
+    if (data.field) {
+      parts.push(`commonly used in ${data.field}`);
+    }
+    
+    return parts.join(' ') || 'No description available';
+  }
+
+  private extractRequiredFields(style: any): StyleField[] {
+    const fields = new Set<StyleField>();
+    
+    // Extract fields from style definition
+    const extractFields = (node: any) => {
+      if (node.variable && typeof node.variable === 'string') {
+        // Only add if it's a valid StyleField
+        if (this.isValidStyleField(node.variable)) {
+          fields.add(node.variable as StyleField);
+        }
+      }
+      if (node.names && typeof node.names === 'string') {
+        // Only add if it's a valid StyleField
+        if (this.isValidStyleField(node.names)) {
+          fields.add(node.names as StyleField);
+        }
+      }
+      if (node.children) node.children.forEach(extractFields);
+    };
+
+    if (style.bibliography) {
+      extractFields(style.bibliography);
+    }
+    if (style.citation) {
+      extractFields(style.citation);
+    }
+
+    return Array.from(fields);
+  }
+
+  // Helper method to check if a string is a valid StyleField
+  private isValidStyleField(field: string): field is StyleField {
+    const validFields: StyleField[] = [
+      'author',
+      'title',
+      'container-title',
+      'issued',
+      'page',
+      'volume',
+      'issue',
+      'DOI',
+      'URL',
+      'ISBN',
+      'ISSN',
+      'publisher',
+      'publisher-place',
+      'edition'
+    ];
+    return validFields.includes(field as StyleField);
+  }
+
+  private getDocumentationUrl(styleId: string): string {
+    return `https://editor.citationstyles.org/documentation/#${styleId}`;
+  }
+
+  private generateCategories(): StyleCategory[] {
+    const categoryMap = new Map<string, StyleCategory>();
+    
+    // Process all styles and count categories
+    this.styles.forEach(style => {
+      style.categories.forEach(catId => {
+        const existing = categoryMap.get(catId);
+        if (existing) {
+          existing.count++;
+        } else {
+          categoryMap.set(catId, {
+            id: catId,
+            name: this.formatCategoryName(catId),
+            description: this.getCategoryDescription(catId),
+            count: 1
+          });
+        }
+      });
+    });
+
+    // Convert to array and sort by count
+    return Array.from(categoryMap.values())
+      .sort((a, b) => b.count - a.count);
+  }
+
+  private formatCategoryName(categoryId: string): string {
+    return categoryId
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
+  private getCategoryDescription(categoryId: string): string {
+    const descriptions: Record<string, string> = {
+      'author-date': 'Styles that use author-year citations',
+      'numeric': 'Styles that use numbered citations',
+      'note': 'Styles that use footnotes or endnotes',
+      'science': 'Citation styles commonly used in scientific publications',
+      'humanities': 'Citation styles used in humanities disciplines',
+      'social-sciences': 'Citation styles for social science research',
+      'legal': 'Citation styles for legal documents and research'
+    };
+    
+    return descriptions[categoryId] || `Citation styles in the ${this.formatCategoryName(categoryId)} category`;
+  }
+
+  // Public API methods
+  async getStyle(styleId: string): Promise<EnhancedStyleMetadata> {
+    if (!this.initialized) await this.initialize();
+    
     const style = this.styles.get(styleId);
     if (!style) {
       throw new Error(`Style ${styleId} not found`);
     }
+    return style;
+  }
 
+  async getAllStyles(): Promise<EnhancedStyleMetadata[]> {
+    if (!this.initialized) await this.initialize();
+    return Array.from(this.styles.values());
+  }
+
+  async generateExample(styleId: string): Promise<string> {
+    if (!this.initialized) await this.initialize();
+    
     try {
-      // Load the actual CSL data
-      const styleData = await Cite.plugins.config.get('@csl/styles')[styleId];
-      return styleData;
+      const style = await this.getStyle(styleId);
+      // Return the bibliography format of the example
+      return style.example.output.bibliography;
     } catch (error) {
-      console.error(`Failed to load style ${styleId}:`, error);
-      throw new Error(`Failed to load style ${styleId}`);
+      console.error(`Failed to generate example for style ${styleId}:`, error);
+      return 'Example not available';
     }
   }
 
-  async getAllStyles(): Promise<StyleCategory[]> {
-    if (!this.initialized) {
-      await this.initializeStyles();
+  async getStylesByCategory(categoryId: string): Promise<EnhancedStyleMetadata[]> {
+    if (!this.initialized) await this.initialize();
+    return Array.from(this.styles.values())
+      .filter(style => style.categories.includes(categoryId));
+  }
+
+  async searchStyles(query: string): Promise<EnhancedStyleMetadata[]> {
+    if (!this.initialized) await this.initialize();
+    
+    const searchTerm = query.toLowerCase();
+    return Array.from(this.styles.values())
+      .filter(style => 
+        style.title.toLowerCase().includes(searchTerm) ||
+        style.id.toLowerCase().includes(searchTerm) ||
+        style.description.toLowerCase().includes(searchTerm) ||
+        style.categories.some(cat => cat.toLowerCase().includes(searchTerm))
+      );
+  }
+
+  async validateStyle(styleId: string): Promise<StyleValidationResult> {
+    if (!this.initialized) await this.initialize();
+    
+    const style = await this.getStyle(styleId);
+    const errors: StyleValidationError[] = [];
+    const warnings: StyleValidationWarning[] = [];
+
+    try {
+      // Validate style existence
+      const styleData = await this.loadStyle(styleId);
+      
+      // Check required properties
+      if (!styleData.citation) {
+        errors.push({
+          code: 'MISSING_CITATION',
+          message: 'Style is missing citation formatting rules'
+        });
+      }
+      
+      if (!styleData.bibliography) {
+        warnings.push({
+          code: 'MISSING_BIBLIOGRAPHY',
+          message: 'Style is missing bibliography formatting rules',
+          suggestion: 'Add bibliography formatting for complete citation support'
+        });
+      }
+
+      // Check for deprecated features
+      if (style.isDeprecated) {
+        warnings.push({
+          code: 'DEPRECATED_STYLE',
+          message: 'This style is marked as deprecated',
+          suggestion: 'Consider using an updated version of this style'
+        });
+      }
+
+      return {
+        isValid: errors.length === 0,
+        errors,
+        warnings
+      };
+    } catch (error) {
+      return {
+        isValid: false,
+        errors: [{
+          code: 'VALIDATION_ERROR',
+          message: error instanceof Error ? error.message : 'Unknown validation error'
+        }],
+        warnings: []
+      };
     }
+  }
+
+  async checkForUpdates(styleId: string): Promise<StyleUpdateInfo> {
+    if (!this.initialized) await this.initialize();
+    
+    const style = await this.getStyle(styleId);
+    
+    // Check for updates no more than once per hour
+    if (this.lastUpdateCheck && 
+        (new Date().getTime() - this.lastUpdateCheck.getTime()) < 3600000) {
+      return {
+        hasUpdate: false,
+        currentVersion: style.version
+      };
+    }
+
+    try {
+      const latestStyle = await Cite.plugins.config.get('@csl/styles')[styleId];
+      const latestVersion = this.parseVersion(latestStyle.version || '1.0.0');
+      
+      this.lastUpdateCheck = new Date();
+      
+      return {
+        hasUpdate: this.isNewerVersion(latestVersion, style.version),
+        currentVersion: style.version,
+        latestVersion,
+        changelogUrl: `https://github.com/citation-style-language/styles/commits/master/${styleId}.csl`
+      };
+    } catch (error) {
+      console.error(`Failed to check for updates for style ${styleId}:`, error);
+      return {
+        hasUpdate: false,
+        currentVersion: style.version
+      };
+    }
+  }
+
+  private isNewerVersion(v1: StyleVersion, v2: StyleVersion): boolean {
+    if (v1.major !== v2.major) return v1.major > v2.major;
+    if (v1.minor !== v2.minor) return v1.minor > v2.minor;
+    return v1.patch > v2.patch;
+  }
+
+  getCategories(): StyleCategory[] {
     return this.categories;
   }
 
-  async searchStyles(query: string): Promise<StyleMetadata[]> {
+  getStyles(): Map<string, EnhancedStyleMetadata> {
     if (!this.initialized) {
-      await this.initializeStyles();
+      throw new Error('UnifiedStyleService must be initialized before getting styles');
     }
-
-    const searchTerm = query.toLowerCase();
-    return Array.from(this.styles.values()).filter(style => 
-      style.title.toLowerCase().includes(searchTerm) ||
-      style.id.toLowerCase().includes(searchTerm)
-    );
+    return this.styles;
   }
 
-  async validateStyle(styleId: string): Promise<boolean> {
+  hasStyle(styleId: string): boolean {
     if (!this.initialized) {
-      await this.initializeStyles();
+      throw new Error('UnifiedStyleService must be initialized before checking styles');
     }
     return this.styles.has(styleId);
   }
 }
 
 // Export singleton instance
-export const styleService = new StyleService();
+export const unifiedStyleService = UnifiedStyleService.getInstance();

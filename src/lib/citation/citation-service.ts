@@ -4,14 +4,29 @@ import '@citation-js/plugin-doi'
 import '@citation-js/plugin-csl'
 import type { 
   CitationInput, 
-  CitationStyle, 
-  CitationOutput, 
+  CitationOutput,
   CitationFormat,
   BibliographyOptions 
 } from './types'
-import { styleService } from './style-service'
+import { unifiedStyleService } from './style-service'
 
 class CitationService {
+  private initialized: boolean = false;
+  private styleCache: Map<string, any> = new Map();
+
+  async initialize(): Promise<void> {
+    if (this.initialized) return;
+
+    try {
+      // Initialize Citation.js plugins
+      await Cite.plugins.config.get('@csl/styles');
+      this.initialized = true;
+    } catch (error) {
+      console.error('Failed to initialize citation service:', error);
+      throw new Error('Citation service initialization failed');
+    }
+  }
+
   /**
    * Creates a citation object from various input types
    */
@@ -46,35 +61,43 @@ class CitationService {
    */
   async generateCitation(
     input: CitationInput | string,
-    options: {
-      style?: CitationStyle;
-      format?: CitationFormat;
-      locale?: string;
-      inText?: boolean;
-    } = {}
+    styleId: string = 'apa'
   ): Promise<CitationOutput> {
-    const { 
-      style = 'apa', 
-      format = 'text',
-      locale = 'en-US',
-      inText = false 
-    } = options;
+    if (!this.initialized) {
+      await this.initialize();
+    }
 
     try {
-      const cite : any = await this.createCitation(input);
-      
-      const formatOptions = {
-        format,
-        template: style,
-        lang: locale
-      };
+      // Ensure style is available
+      const style = await unifiedStyleService.getStyle(styleId);
+      if (!style) {
+        throw new Error(`Style ${styleId} not found`);
+      }
 
+      const cite = await this.createCitation(input);
+      
       return {
-        html: cite.format('bibliography', { ...formatOptions, format: 'html' }),
-        text: cite.format('bibliography', { ...formatOptions, format: 'text' }),
-        inText: cite.format('citation', formatOptions),
-        bibtex: cite.format('bibtex'),
-        json: cite.format('data', { format: 'object' })
+        html: cite.format('bibliography', {
+          format: 'html',
+          template: styleId,
+          lang: 'en-US'
+        }),
+        text: cite.format('bibliography', {
+          format: 'text',
+          template: styleId,
+          lang: 'en-US'
+        }),
+        inText: cite.format('citation', {
+          template: styleId,
+          lang: 'en-US'
+        }),
+        bibtex: cite.format('bibliography', {
+          format: 'text',
+        }),
+        // For JSON output
+        json: cite.format('bibliography', {
+          format: 'text',
+        })
       };
     } catch (error) {
       console.error('Citation generation error:', error);
@@ -89,6 +112,10 @@ class CitationService {
     inputs: (CitationInput | string)[],
     options: BibliographyOptions = {}
   ): Promise<CitationOutput> {
+    if (!this.initialized) {
+      await this.initialize();
+    }
+
     const { 
       style = 'apa', 
       format = 'text',
@@ -101,21 +128,33 @@ class CitationService {
         inputs.map(input => this.createCitation(input))
       );
       
-      const cite : any = Cite.async(citations);
+      const cite = await Cite.async(citations);
       
-      const formatOptions = {
-        format,
-        template: style,
-        lang: locale,
-        sort: sorting
-      };
-
       return {
-        html: cite.format('bibliography', { ...formatOptions, format: 'html' }),
-        text: cite.format('bibliography', { ...formatOptions, format: 'text' }),
-        inText: cite.format('citation', formatOptions),
-        bibtex: cite.format('bibtex'),
-        json: cite.format('data', { format: 'object' })
+        html: cite.format('bibliography', {
+          format: 'html',
+          template: style,
+          lang: locale,
+        }),
+        text: cite.format('bibliography', {
+          format: 'text',
+          template: style,
+          lang: locale,
+        }),
+        inText: cite.format('citation', {
+          template: style,
+          lang: locale
+        }),
+        bibtex: cite.format('bibliography', {
+          format: 'text',
+          template: style,
+          lang: locale,
+        }),
+        json: cite.format('bibliography', {
+          format: 'text',
+          template: style,
+          lang: locale,
+        })
       };
     } catch (error) {
       console.error('Bibliography generation error:', error);
@@ -123,27 +162,28 @@ class CitationService {
     }
   }
 
-  // Get all available citation styles
-  async getAvailableStyles() {
-    return styleService.getAllStyles();
-  }
-
-  // Search for citation styles
-  async searchStyles(query: string) {
-    return styleService.searchStyles(query);
+  /**
+   * Get available citation styles
+   */
+  async getAvailableStyles(): Promise<string[]> {
+    await unifiedStyleService.initialize();
+    return Array.from(unifiedStyleService.getStyles().keys());
   }
 
   /**
-   * Validates a DOI string
+   * Check if a style is available
    */
+  async isStyleAvailable(styleId: string): Promise<boolean> {
+    await unifiedStyleService.initialize();
+    return unifiedStyleService.hasStyle(styleId);
+  }
+
+  // Utility methods remain the same
   private isValidDOI(doi: string): boolean {
     const doiRegex = /^10.\d{4,9}\/[-._;()\/:A-Z0-9]+$/i;
     return doiRegex.test(doi);
   }
 
-  /**
-   * Validates a URL string
-   */
   private isValidURL(url: string): boolean {
     try {
       new URL(url);
@@ -153,23 +193,15 @@ class CitationService {
     }
   }
 
-  /**
-   * Checks if a string is BibTeX format
-   */
   private isBibTeX(text: string): boolean {
     return text.trim().startsWith('@') && 
            /^@\w+\s*\{[^}]+\}/.test(text.trim());
   }
 
-  /**
-   * Fetches metadata from a URL
-   */
   private async fetchMetadataFromURL(url: string): Promise<any> {
     try {
       const response = await fetch(url);
       const html = await response.text();
-      
-      // Extract metadata from HTML
       const metadata = this.extractMetadata(html);
       
       if (!metadata) {
@@ -182,13 +214,8 @@ class CitationService {
     }
   }
 
-  /**
-   * Extracts metadata from HTML content
-   */
   private extractMetadata(html: string): any {
-    // Basic metadata extraction from meta tags
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    
     const metadata: Record<string, string> = {};
     
     // Dublin Core metadata
@@ -215,9 +242,6 @@ class CitationService {
     return metadata;
   }
 
-  /**
-   * Flattens Schema.org JSON-LD data
-   */
   private flattenSchemaData(data: any, prefix = ''): Record<string, string> {
     const result: Record<string, string> = {};
     

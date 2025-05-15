@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { getFormConfig } from '@/lib/citation/form-config';
 import { SourceTypeSelector } from './SourceTypeSelector';
 import { FormSection } from './FormSection';
-import { CitationPreview } from './CitationPreview';
 import { useFormPersistence } from '@/lib/citation/hooks/useFormPersistence';
+import { EnhancedCitationPreview } from './EnhancedCitationPreview';
 
 export function CitationForm() {
   const [sourceType, setSourceType] = useState('article-journal');
   const formConfig = getFormConfig(sourceType);
+  const [selectedStyles, setSelectedStyles] = useState(['apa']); 
   
   const { formData, updateFormData, saveForm } = useFormPersistence(sourceType);
 
@@ -37,9 +38,10 @@ export function CitationForm() {
         ))}
         
         <div className="mt-8">
-          <CitationPreview
+          <EnhancedCitationPreview
             sourceType={sourceType}
             data={formData}
+            selectedStyles={selectedStyles}
           />
         </div>
         
