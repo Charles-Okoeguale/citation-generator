@@ -5,6 +5,7 @@ import type { CitationOutput, CitationFormat } from '@/lib/citation/types';
 import { FormatSwitcher } from './format/FormatSwitcher';
 import { CitationExport } from './export/CitationExport';
 import { CitationShare } from './share/CitationShare';
+import { SaveCitation } from './SaveCitation';
 
 interface CitationPreviewProps {
   citation: CitationOutput;
@@ -20,6 +21,11 @@ export function CitationPreview({ citation, onCitationUpdate }: CitationPreviewP
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-semibold">Citation Preview</h2>
+        <SaveCitation citation={citation} />
+      </div>
+
       <div className="border rounded-lg p-6">
         <h3 className="text-lg font-medium mb-4">Citation Format</h3>
         <FormatSwitcher
