@@ -12,6 +12,22 @@ import type {
   StyleField
 } from './types';
 
+export interface StyleMetadata {
+  id: string;
+  title: string;
+  description: string;
+  version?: string;
+  url?: string;
+  documentation?: string;
+  tags: string[];
+  disciplines: string[];
+  lastUpdated?: string;
+  isDeprecated?: boolean;
+  dependencies?: string[];
+  publisher?: any
+  categories?: any
+}
+
 class UnifiedStyleService {
   private static instance: UnifiedStyleService;
   private styles: Map<string, EnhancedStyleMetadata> = new Map();
@@ -448,3 +464,184 @@ class UnifiedStyleService {
 
 // Export singleton instance
 export const unifiedStyleService = UnifiedStyleService.getInstance();
+
+// Style metadata cache
+const styleMetadataCache = new Map<string, StyleMetadata>();
+
+// Base metadata for common citation styles
+const baseStyleMetadata: Record<string, StyleMetadata> = {
+  'apa': {
+    id: 'apa',
+    title: 'APA (American Psychological Association)',
+    description: 'APA Style is widely used in the social sciences, education, and business.',
+    version: '7th edition',
+    documentation: 'https://apastyle.apa.org/',
+    tags: ['author-date', 'doi-support', 'url-required', 'north-america'],
+    disciplines: ['social-sciences', 'psychology', 'education'],
+    lastUpdated: '2023-01-01'
+  },
+  'mla': {
+    id: 'mla',
+    title: 'MLA (Modern Language Association)',
+    description: 'MLA Style is widely used in the humanities, especially in writing about language and literature.',
+    version: '9th edition',
+    documentation: 'https://style.mla.org/',
+    tags: ['author-page', 'multilingual', 'north-america'],
+    disciplines: ['humanities', 'literature', 'languages'],
+    lastUpdated: '2023-01-01'
+  },
+  'chicago': {
+    id: 'chicago',
+    title: 'Chicago Manual of Style',
+    description: 'Chicago Style is widely used in history and some humanities disciplines.',
+    version: '17th edition',
+    documentation: 'https://www.chicagomanualofstyle.org/',
+    tags: ['note', 'author-date', 'complex', 'north-america'],
+    disciplines: ['humanities', 'history', 'arts'],
+    lastUpdated: '2023-01-01'
+  },
+  'harvard': {
+    id: 'harvard',
+    title: 'Harvard',
+    description: 'Harvard Style is commonly used in universities across the UK and other countries.',
+    version: '2023',
+    tags: ['author-date', 'europe', 'university'],
+    disciplines: ['social-sciences', 'business', 'humanities'],
+    lastUpdated: '2023-01-01'
+  },
+  'ieee': {
+    id: 'ieee',
+    title: 'IEEE',
+    description: 'IEEE Style is used in engineering and computer science publications.',
+    version: '2023',
+    documentation: 'https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf',
+    tags: ['numeric', 'journal-publisher', 'doi-support'],
+    disciplines: ['engineering', 'computer-science', 'technology'],
+    lastUpdated: '2023-01-01'
+  }
+};
+
+/**
+ * Fetches metadata for a specific citation style
+ * @param styleId The identifier of the citation style
+ * @returns The style metadata or null if not found
+ */
+export async function getStyleMetadata(styleId: string): Promise<StyleMetadata | null> {
+  // Check cache first
+  if (styleMetadataCache.has(styleId)) {
+    return styleMetadataCache.get(styleId)!;
+  }
+
+  try {
+    // First check if it's a base style
+    if (baseStyleMetadata[styleId]) {
+      styleMetadataCache.set(styleId, baseStyleMetadata[styleId]);
+      return baseStyleMetadata[styleId];
+    }
+
+    // If not in base styles, fetch from CSL repository
+    const response = await fetch(
+      `https://raw.githubusercontent.com/citation-style-language/styles/master/${styleId}.csl`
+    );
+
+    if (!response.ok) {
+      console.error(`Failed to fetch style ${styleId}: ${response.statusText}`);
+      return null;
+    }
+
+    const cslData = await response.text();
+    
+    // Parse CSL XML to extract metadata
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(cslData, 'text/xml');
+    
+    const info = doc.getElementsByTagName('info')[0];
+    const title = info.getElementsByTagName('title')[0]?.textContent || styleId;
+    const description = info.getElementsByTagName('summary')[0]?.textContent || '';
+    
+    // Extract additional metadata from CSL
+    const metadata: any = {
+      id: styleId,
+      title,
+      description,
+      version: info.getElementsByTagName('version')[0]?.textContent,
+      url: info.getElementsByTagName('link')[0]?.getAttribute('href') || undefined,
+      tags: inferStyleTags(cslData),
+      disciplines: inferStyleDisciplines(cslData),
+      lastUpdated: info.getElementsByTagName('updated')[0]?.textContent
+    };
+
+    // Cache the metadata
+    styleMetadataCache.set(styleId, metadata);
+    return metadata;
+
+  } catch (error) {
+    console.error(`Error fetching style metadata for ${styleId}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Infers style tags based on CSL content
+ */
+function inferStyleTags(cslContent: string): string[] {
+  const tags: string[] = [];
+
+  // Infer format
+  if (cslContent.includes('citation-format="author-date"')) {
+    tags.push('author-date');
+  } else if (cslContent.includes('citation-format="numeric"')) {
+    tags.push('numeric');
+  } else if (cslContent.includes('citation-format="note"')) {
+    tags.push('note');
+  }
+
+  // Infer features
+  if (cslContent.includes('<text variable="DOI"')) {
+    tags.push('doi-support');
+  }
+  if (cslContent.includes('<text variable="URL"')) {
+    tags.push('url-required');
+  }
+  if (cslContent.includes('xml:lang=')) {
+    tags.push('multilingual');
+  }
+
+  return tags;
+}
+
+/**
+ * Infers disciplines based on CSL content and style metadata
+ */
+function inferStyleDisciplines(cslContent: string): string[] {
+  const disciplines: string[] = [];
+
+  // Infer disciplines based on content patterns
+  if (cslContent.includes('psychology') || cslContent.includes('behavioral')) {
+    disciplines.push('psychology');
+  }
+  if (cslContent.includes('humanities') || cslContent.includes('literature')) {
+    disciplines.push('humanities');
+  }
+  if (cslContent.includes('science') || cslContent.includes('scientific')) {
+    disciplines.push('sciences');
+  }
+  if (cslContent.includes('engineering') || cslContent.includes('technical')) {
+    disciplines.push('engineering');
+  }
+
+  return disciplines;
+}
+
+/**
+ * Gets a list of all available citation styles
+ */
+export async function getAllStyles(): Promise<StyleMetadata[]> {
+  // Start with base styles
+  const styles = Object.values(baseStyleMetadata);
+
+  // Could extend this to fetch from CSL repository
+  // or other sources as needed
+
+  return styles;
+}

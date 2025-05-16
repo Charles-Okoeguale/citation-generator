@@ -82,9 +82,9 @@ export async function PUT(req: Request) {
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-
     const body = await req.json();
-    const { id, ...updateData } = citationSchema.parse(body);
+    const { ...updateData } = citationSchema.parse(body);
+    const { id } = body;
 
     // Verify ownership
     const existingCitation = await db.savedCitation.findFirst({

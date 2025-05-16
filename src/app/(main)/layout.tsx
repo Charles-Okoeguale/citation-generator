@@ -1,7 +1,7 @@
-// app/(main)/layout.tsx
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { AuthProvider } from '@/app/components/providers/AuthProvider';
 
 export default async function MainLayout({
   children,
@@ -16,11 +16,10 @@ export default async function MainLayout({
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white shadow">
-        {/* Add your navigation here */}
-      </nav>
       <main className="container mx-auto py-6 px-4">
-        {children}
+        <AuthProvider session={session}>
+          {children}
+        </AuthProvider>
       </main>
     </div>
   );

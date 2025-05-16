@@ -34,7 +34,7 @@ export function AuthorField({ value = [], onChange, required }: AuthorFieldProps
   return (
     <div className="space-y-4">
       {/* Existing Authors */}
-      {value.map((author, index) => (
+      {value?.map((author, index) => (
         <div key={index} className="flex gap-4 items-start">
           <div className="flex-1 space-y-2">
             <input
@@ -89,7 +89,7 @@ export function AuthorField({ value = [], onChange, required }: AuthorFieldProps
         </button>
       </div>
 
-      {required && value.length === 0 && (
+      {required && value?.length === 0 && (
         <p className="text-red-500 text-sm">At least one author is required</p>
       )}
     </div>
