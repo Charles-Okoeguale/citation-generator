@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-hot-toast';
 import Link from 'next/link';
+import { authToasts } from '@/lib/utils/toast';
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -45,23 +45,23 @@ export default function RegisterPage() {
 
       if (!response.ok) {
         if (result.error?.includes('email already exists')) {
-          toast.error('This email is already registered. Please log in instead.');
+          authToasts.emailExists();
         } else if (result.error?.includes('password')) {
-          toast.error(result.error || 'Password does not meet requirements');
+          authToasts.passwordRequirements();
         } else {
-          toast.error(result.error || 'Registration failed');
+          authToasts.signupFailed(result.error);
         }
         return;
       }
 
-      toast.success('Account created successfully! Redirecting to login...');
+      authToasts.signupSuccess();
       
       setTimeout(() => {
         router.push('/login');
       }, 1500);
     } catch (error: any) {
       console.error('Registration error:', error);
-      toast.error('An unexpected error occurred. Please try again.');
+      authToasts.signupFailed();
     } finally {
       setIsLoading(false);
     }

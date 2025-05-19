@@ -11,7 +11,7 @@ import { StylePreferences } from './citation-styles/StylePreferences';
 import { useStylePreferences } from '@/lib/citation/hooks/useStylePreferences';
 import { GeneratedCitation } from './citation-forms/GeneratedCitation';
 import { citationService } from '@/lib/citation/citation-service';
-import toast from 'react-hot-toast';
+import { citationToasts, styleToasts, generalToasts } from '@/lib/utils/toast';
 import { styles, getStyles } from '@/lib/citation/style-data';
 import type { SourceType, CitationInput } from '@/lib/citation/types';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -114,8 +114,7 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
         setIsGenerating(false);
       } catch (error) {
         console.error('Error initializing citation service:', error);
-        toast.error('Error initializing citation service. Please refresh the page.');
-        // Still set as initialized to prevent blocking the UI
+        generalToasts.error('We could not set up the citation system. Please refresh the page and try again.');
         setServiceInitialized(true);
         setIsGenerating(false);
       }
@@ -146,7 +145,7 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
     
     // Validate required fields
     if (!validateForm()) {
-      toast.error('Please fill in all required fields');
+      citationToasts.missingFields();
       return;
     }
     
@@ -154,13 +153,13 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
     
     try {
       // Show loading state
-      toast.loading('Generating citation...', { id: 'citationToast' });
+      citationToasts.generating();
       
       // Create citation input from form data
       const citationInput = createCitationInput();
       
       if (!citationInput) {
-        toast.error('Failed to create citation input', { id: 'citationToast' });
+        citationToasts.generateFailed();
         setIsGenerating(false);
         return;
       }
@@ -172,7 +171,7 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
       );
       
       if (!citation) {
-        toast.error('Failed to generate citation', { id: 'citationToast' });
+        citationToasts.generateFailed();
         setIsGenerating(false);
         return;
       }
@@ -185,10 +184,10 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
         await saveForm();
       }
       
-      toast.success('Citation generated successfully', { id: 'citationToast' });
+      citationToasts.generateSuccess();
     } catch (error) {
       console.error('Error during citation generation:', error);
-      toast.error('An error occurred while processing your citation', { id: 'citationToast' });
+      citationToasts.generateFailed();
     } finally {
       setIsGenerating(false);
     }
@@ -223,10 +222,10 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
         throw new Error('Failed to update citation');
       }
       
-      toast.success('Citation updated successfully', { id: 'citationToast' });
+      citationToasts.updated();
     } catch (error) {
       console.error('Error updating citation:', error);
-      toast.error('Failed to update citation', { id: 'citationToast' });
+      citationToasts.updateFailed();
     } finally {
       setIsSaving(false);
     }

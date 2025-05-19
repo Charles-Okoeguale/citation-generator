@@ -2,7 +2,7 @@
 
 import { SaveCitation } from '../SaveCitation';
 import { useState } from 'react';
-import toast from 'react-hot-toast';
+import { citationToasts } from '@/lib/utils/toast';
 
 interface GeneratedCitationProps {
   citation: {
@@ -20,10 +20,10 @@ export function GeneratedCitation({ citation, onClose }: GeneratedCitationProps)
     try {
       await navigator.clipboard.writeText(text);
       setCopied(type);
-      toast.success('Copied to clipboard');
+      citationToasts.copied();
       setTimeout(() => setCopied(null), 2000);
     } catch (error) {
-      toast.error('Failed to copy to clipboard');
+      citationToasts.copyFailed();
     }
   };
 

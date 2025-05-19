@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePagination } from '@/lib/hooks/use-pagination';
 import { Pagination } from '@/app/components/ui/Pagination';
-import { toast } from 'react-hot-toast';
+import { citationToasts, generalToasts } from '@/lib/utils/toast';
 
 // Define the Citation type
 interface Citation {
@@ -54,7 +54,7 @@ export default function DashboardPage() {
       setSavedCitations(data);
     } catch (error) {
       console.error('Error fetching citations:', error);
-      toast.error('Failed to load your citations. Please try again.');
+      generalToasts.error('We couldn\'t load your citations. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -63,23 +63,23 @@ export default function DashboardPage() {
   async function handleDelete(citationId: string) {
     if (confirm("Are you sure you want to delete this citation?")) {
       try {
-        toast.loading('Deleting citation...', { id: 'deleteToast' });
+        citationToasts.generating();
         
         const response = await fetch(`/api/citations?id=${citationId}`, {
           method: 'DELETE'
         });
         
         if (response.ok) {
-          toast.success('Citation deleted successfully', { id: 'deleteToast' });
+          citationToasts.deleted();
           // Refresh the citations list
           fetchCitations();
         } else {
           const error = await response.json();
-          toast.error(error.message || 'Failed to delete citation', { id: 'deleteToast' });
+          citationToasts.deleteFailed();
         }
       } catch (error) {
         console.error('Error deleting citation:', error);
-        toast.error('An error occurred while deleting the citation', { id: 'deleteToast' });
+        citationToasts.deleteFailed();
       }
     }
   }

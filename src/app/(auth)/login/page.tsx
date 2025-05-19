@@ -6,8 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-hot-toast';
 import Link from 'next/link';
+import { authToasts } from '@/lib/utils/toast';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -34,14 +34,14 @@ export default function LoginPage() {
       });
 
       if (result?.error) {
-        toast.error('Invalid credentials');
+        authToasts.loginFailed();
         return;
       }
 
       router.push('/dashboard');
-      toast.success('Logged in successfully');
+      authToasts.loginSuccess();
     } catch (error) {
-      toast.error('Something went wrong');
+      authToasts.loginFailed();
     } finally {
       setIsLoading(false);
     }

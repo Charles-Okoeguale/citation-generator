@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
+import { citationToasts, authToasts } from '@/lib/utils/toast';
 import type { CitationOutput } from '@/lib/citation/types';
 
 interface SaveCitationProps {
@@ -18,7 +18,7 @@ export function SaveCitation({ citation }: SaveCitationProps) {
 
   const handleSave = async () => {
     if (!session) {
-      toast.error('Please log in to save citations');
+      authToasts.loginFailed();
       router.push('/login');
       return;
     }
@@ -42,10 +42,10 @@ export function SaveCitation({ citation }: SaveCitationProps) {
         throw new Error('Failed to save citation');
       }
 
-      toast.success('Citation saved successfully');
+      citationToasts.saved();
       router.refresh();
     } catch (error) {
-      toast.error('Failed to save citation');
+      citationToasts.saveFailed();
       console.error('Save citation error:', error);
     } finally {
       setIsSaving(false);
