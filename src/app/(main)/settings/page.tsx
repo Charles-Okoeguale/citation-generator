@@ -129,12 +129,37 @@ export default function SettingsPage() {
       <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Settings</h1>
       
       <div className="space-y-6">
-        {/* Existing settings sections ... */}
-        
         {/* Citation Style Preferences */}
         <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
           <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Citation Style Preferences</h2>
           {/* ... existing settings ... */}
+        </div>
+        
+        {/* Display Preferences */}
+        <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Display Preferences</h2>
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="citationsPerPage" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                Citations Per Page
+              </label>
+              <select
+                id="citationsPerPage"
+                value={citationsPerPage}
+                onChange={(e) => setCitationsPerPage(Number(e.target.value))}
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              >
+                {[5, 10, 15, 20, 25, 50].map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                Number of citations to display per page in the dashboard.
+              </p>
+            </div>
+          </div>
         </div>
         
         {/* Appearance */}
@@ -146,7 +171,7 @@ export default function SettingsPage() {
               className={`
                 flex items-center space-x-2 p-4 rounded-md border transition-colors
                 ${theme === 'light' 
-                  ? 'border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/20 dark:text-blue-300' 
+                  ? 'border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300' 
                   : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-300'
                 }
               `}
@@ -159,7 +184,7 @@ export default function SettingsPage() {
               className={`
                 flex items-center space-x-2 p-4 rounded-md border transition-colors
                 ${theme === 'dark' 
-                  ? 'border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/20 dark:text-blue-300' 
+                  ? 'border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300' 
                   : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-300'
                 }
               `}
