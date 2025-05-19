@@ -3,64 +3,61 @@
 import { useState, useEffect, useRef } from 'react';
 
 export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState<T>(initialValue);
+  // Create a ref for the initial value to avoid dependencies on objects/arrays
+  const initialValueRef = useRef<T>(initialValue);
   
-  // Use ref to track if this is the first render
-  const isFirstRender = useRef(true);
-  // Store stringified initialValue to compare changes
-  const initialValueRef = useRef(JSON.stringify(initialValue));
-
-  // Initialize state on the client
-  useEffect(() => {
-    // Skip effect if key hasn't changed and it's not the first render
-    if (!isFirstRender.current && initialValueRef.current === JSON.stringify(initialValue)) {
-      return;
+  // State to store our value
+  // Initialize state lazily to avoid unnecessary operations on server
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    if (typeof window === 'undefined') {
+      return initialValue;
     }
-    
-    // Update ref values
-    isFirstRender.current = false;
-    initialValueRef.current = JSON.stringify(initialValue);
     
     try {
       // Get from local storage by key
       const item = window.localStorage.getItem(key);
-      // Parse stored json or if none return initialValue
-      if (item !== null) {
-        const value = JSON.parse(item);
-        setStoredValue(value);
-      } else if (initialValue !== undefined) {
-        // Only set to initialValue if localStorage is empty
-        setStoredValue(initialValue);
-        window.localStorage.setItem(key, JSON.stringify(initialValue));
-      }
+      // Parse stored json or return initialValue
+      return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      // If error also return initialValue
-      console.log(error);
-      setStoredValue(initialValue);
+      console.error('Error reading from localStorage:', error);
+      return initialValue;
     }
-  }, [key, initialValue]);
+  });
+  
+  // Use a ref to track if this is first client-side render
+  const isFirstMount = useRef(true);
 
-  // Return a wrapped version of useState's setter function that
-  // persists the new value to localStorage
+  // Set up localStorage sync effect
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Skip initial synchronization if we already loaded from localStorage
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    
+    // Save to localStorage whenever storedValue changes
+    try {
+      window.localStorage.setItem(key, JSON.stringify(storedValue));
+    } catch (error) {
+      console.error('Error writing to localStorage:', error);
+    }
+  }, [key, storedValue]);
+
+  // Return a wrapped version of useState's setter function
   const setValue = (value: T | ((val: T) => T)) => {
     try {
-      // Allow value to be a function so we have same API as useState
+      // Allow value to be a function
       const valueToStore = 
         value instanceof Function 
           ? value(storedValue) 
           : value;
-          
+      
       // Save state
       setStoredValue(valueToStore);
-      // Save to local storage
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      }
     } catch (error) {
-      // A more advanced implementation would handle the error case
-      console.log(error);
+      console.error('Error in localStorage setter:', error);
     }
   };
 

@@ -131,7 +131,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex space-x-3">
                     <Link
-                      href={`/citation-styles/${citation.id}`}
+                      href={`/citations/${citation.id}`}
                       className="text-brand hover:text-brand-dark dark:text-brand-light dark:hover:text-brand-light text-sm font-medium"
                     >
                       Edit

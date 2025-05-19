@@ -27,30 +27,36 @@ class CitationService {
         return;
       }
 
-      // Initialize Citation.js plugins with dynamic import
-      const Cite = (await import('@citation-js/core')).Cite;
-      
-      // Make sure plugins are available
-      if (!Cite.plugins?.config) {
-        console.warn('Citation.js plugins not available, trying to load them');
+      // Import Citation.js modules directly and sequentially
+      try {
+        // Core module
+        const { Cite } = await import('@citation-js/core');
+        
+        // Import plugins one by one to ensure proper initialization
         await import('@citation-js/plugin-bibtex');
         await import('@citation-js/plugin-doi');
         await import('@citation-js/plugin-csl');
-      }
-      
-      // Now try to access the styles
-      if (Cite.plugins?.config?.get) {
-        await Cite.plugins.config.get('@csl/styles');
-      } else {
-        console.warn('Citation.js plugins.config.get not available, continuing anyway');
+        
+        // Preload common styles
+        if (Cite.plugins?.config?.get) {
+          try {
+            await Cite.plugins.config.get('@csl/styles');
+          } catch (styleError) {
+            console.warn('Could not preload CSL styles, will load on demand:', styleError);
+          }
+        }
+        
+        console.log('Citation.js library successfully initialized');
+      } catch (importError) {
+        console.error('Error importing Citation.js modules:', importError);
+        throw importError;
       }
       
       this.initialized = true;
     } catch (error) {
       console.error('Failed to initialize citation service:', error);
-      console.error('Error details:', error);
-      // Set initialized to true anyway to prevent repeated failures
-      this.initialized = true;
+      // Don't set initialized to true on error - we need to retry
+      throw new Error('Citation service initialization failed');
     }
   }
 
@@ -58,7 +64,14 @@ class CitationService {
    * Creates a citation object from various input types
    */
   private async createCitation(input: CitationInput | string): Promise<Cite> {
+    if (!this.initialized) {
+      await this.initialize();
+    }
+    
     try {
+      // Ensure Cite is properly imported
+      const { Cite } = await import('@citation-js/core');
+      
       // Handle DOI input
       if (typeof input === 'string' && this.isValidDOI(input)) {
         return new Cite(input);
@@ -75,12 +88,43 @@ class CitationService {
         return new Cite(input);
       }
 
-      // Handle direct CSL-JSON input
+      // Handle direct CSL-JSON input - convert to proper format if needed
+      if (typeof input === 'object') {
+        const cslData = this.ensureValidCSLFormat(input);
+        return new Cite(cslData);
+      }
+
+      // Default case - try to parse as is
       return new Cite(input);
     } catch (error) {
       console.error('Error creating citation:', error);
       throw new Error(`Failed to create citation: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
+  }
+
+  /**
+   * Ensures the input is in valid CSL-JSON format
+   */
+  private ensureValidCSLFormat(input: any): any {
+    // If input is already an array, return as is
+    if (Array.isArray(input)) {
+      return input;
+    }
+    
+    // Make sure the citation has required fields
+    const citation = { ...input };
+    
+    // Ensure the citation has a title
+    if (!citation.title) {
+      citation.title = 'Untitled';
+    }
+    
+    // Ensure the citation has a type
+    if (!citation.type) {
+      citation.type = 'article';
+    }
+    
+    return citation;
   }
 
   /**
@@ -97,38 +141,43 @@ class CitationService {
     try {
       // Ensure style is available
       const style = await unifiedStyleService.getStyle(styleId);
+      
+      // If the requested style is not available, use APA as fallback
+      const effectiveStyleId = style ? styleId : 'apa';
+      
       if (!style) {
-        throw new Error(`Style ${styleId} not found`);
+        console.warn(`Style ${styleId} not found, falling back to APA style`);
       }
 
       const cite = await this.createCitation(input);
       
+      // Get JSON representation
+      const jsonOutput = typeof input === 'object' ? input : {};
+      
       return {
         html: cite.format('bibliography', {
           format: 'html',
-          template: styleId,
+          template: effectiveStyleId,
           lang: 'en-US'
         }),
         text: cite.format('bibliography', {
           format: 'text',
-          template: styleId,
+          template: effectiveStyleId,
           lang: 'en-US'
         }),
         inText: cite.format('citation', {
-          template: styleId,
+          template: effectiveStyleId,
           lang: 'en-US'
         }),
         bibtex: cite.format('bibliography', {
           format: 'text',
         }),
-        // For JSON output
-        json: cite.format('bibliography', {
-          format: 'text',
-        })
+        // Use the input object as the JSON representation
+        json: jsonOutput
       };
     } catch (error) {
       console.error('Citation generation error:', error);
-      throw new Error('Failed to generate citation');
+      throw new Error(`Failed to generate citation: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 

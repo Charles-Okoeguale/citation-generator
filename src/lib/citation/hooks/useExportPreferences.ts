@@ -1,23 +1,23 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useSession } from 'next-auth/react';
-import { UserStylePreferences } from '../types';
+import { ExportFormat, UserExportPreferences } from '../types';
 import { useLocalStorage } from '@/lib/hooks/use-local-storage';
 
-const MAX_RECENT_STYLES = 5;
-const MAX_FAVORITE_STYLES = 10;
+const MAX_RECENT_FORMATS = 3;
 
-export function useStylePreferences() {
+export function useExportPreferences() {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fetchedRef = useRef(false);
   
   // Local storage as fallback and for immediate access
-  const [preferences, setLocalPreferencesState] = useLocalStorage<UserStylePreferences>(
-    'user-style-preferences',
+  const [preferences, setLocalPreferencesState] = useLocalStorage<UserExportPreferences>(
+    'user-export-preferences',
     {
-      favoriteStyles: [],
-      recentStyles: []
+      defaultExportFormat: 'pdf',
+      includeInText: true,
+      recentExportFormats: []
     }
   );
   
@@ -28,9 +28,9 @@ export function useStylePreferences() {
       fetchedRef.current = true;
       setLoading(true);
       
-      fetch('/api/user/preferences')
+      fetch('/api/user/export-preferences')
         .then(res => {
-          if (!res.ok) throw new Error('Failed to fetch preferences');
+          if (!res.ok) throw new Error('Failed to fetch export preferences');
           return res.json();
         })
         .then(data => {
@@ -39,8 +39,8 @@ export function useStylePreferences() {
           }
         })
         .catch(err => {
-          console.error('Error fetching preferences:', err);
-          setError('Failed to load preferences');
+          console.error('Error fetching export preferences:', err);
+          setError('Failed to load export preferences');
         })
         .finally(() => {
           setLoading(false);
@@ -50,42 +50,30 @@ export function useStylePreferences() {
   }, [session?.user?.email, setLocalPreferencesState]);
   
   // Sync changes to server with error handling
-  const syncToServer = useCallback(async (updatedPreferences: UserStylePreferences) => {
+  const syncToServer = useCallback(async (updatedPreferences: UserExportPreferences) => {
     if (!session?.user) return;
     
     try {
-      const res = await fetch('/api/user/preferences', {
+      const res = await fetch('/api/user/export-preferences', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedPreferences)
       });
       
       if (!res.ok) {
-        throw new Error('Failed to sync preferences');
+        throw new Error('Failed to sync export preferences');
       }
     } catch (err) {
-      console.error('Error syncing preferences:', err);
+      console.error('Error syncing export preferences:', err);
       // Don't break the user experience on sync error
     }
   }, [session?.user]);
   
-  const addToFavorites = useCallback((styleId: string) => {
+  const setDefaultExportFormat = useCallback((format: ExportFormat) => {
     setLocalPreferencesState(prev => {
-      const existing = prev.favoriteStyles.find(s => s.styleId === styleId);
-      if (existing) return prev;
-      
-      const newFavorites = [
-        {
-          styleId,
-          lastUsed: new Date(),
-          useCount: 1
-        },
-        ...prev.favoriteStyles
-      ].slice(0, MAX_FAVORITE_STYLES);
-      
       const updatedPreferences = {
         ...prev,
-        favoriteStyles: newFavorites
+        defaultExportFormat: format
       };
       
       // Sync to server if logged in
@@ -95,11 +83,11 @@ export function useStylePreferences() {
     });
   }, [setLocalPreferencesState, syncToServer]);
   
-  const removeFromFavorites = useCallback((styleId: string) => {
+  const setIncludeInText = useCallback((include: boolean) => {
     setLocalPreferencesState(prev => {
       const updatedPreferences = {
         ...prev,
-        favoriteStyles: prev.favoriteStyles.filter(s => s.styleId !== styleId)
+        includeInText: include
       };
       
       // Sync to server if logged in
@@ -109,43 +97,17 @@ export function useStylePreferences() {
     });
   }, [setLocalPreferencesState, syncToServer]);
   
-  const updateStyleUsage = useCallback((styleId: string) => {
+  const updateFormatUsage = useCallback((format: ExportFormat) => {
     setLocalPreferencesState(prev => {
-      // Update favorites if style is favorited
-      const updatedFavorites = prev.favoriteStyles.map(style =>
-        style.styleId === styleId
-          ? {
-              ...style,
-              lastUsed: new Date(),
-              useCount: style.useCount + 1
-            }
-          : style
-      );
-      
-      // Update recent styles
+      // Update recent formats
       const newRecent = [
-        styleId,
-        ...prev.recentStyles.filter(id => id !== styleId)
-      ].slice(0, MAX_RECENT_STYLES);
+        format,
+        ...prev.recentExportFormats.filter(f => f !== format)
+      ].slice(0, MAX_RECENT_FORMATS);
       
       const updatedPreferences = {
         ...prev,
-        favoriteStyles: updatedFavorites,
-        recentStyles: newRecent
-      };
-      
-      // Sync to server if logged in
-      syncToServer(updatedPreferences);
-      
-      return updatedPreferences;
-    });
-  }, [setLocalPreferencesState, syncToServer]);
-  
-  const setDefaultStyle = useCallback((styleId: string) => {
-    setLocalPreferencesState(prev => {
-      const updatedPreferences = {
-        ...prev,
-        defaultStyle: styleId
+        recentExportFormats: newRecent
       };
       
       // Sync to server if logged in
@@ -157,11 +119,10 @@ export function useStylePreferences() {
   
   return {
     preferences,
-    addToFavorites,
-    removeFromFavorites,
-    updateStyleUsage,
-    setDefaultStyle,
+    setDefaultExportFormat,
+    setIncludeInText,
+    updateFormatUsage,
     loading,
     error
   };
-}
+} 

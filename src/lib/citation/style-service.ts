@@ -104,27 +104,37 @@ class UnifiedStyleService {
    * Loads Citation.js plugins sequentially with completion verification
    */
   private async loadPluginsSequentially(): Promise<void> {
-    // Step 1: Import core and get plugins registry
-    const core = await import('@citation-js/core');
-    const Cite = core.default || core.Cite;
-    
-    // Step 2: Import CSL plugin and wait for event loop to process registration
-    await import('@citation-js/plugin-csl');
-    await new Promise(resolve => setTimeout(resolve, 50));
-    
-    // Step 3: Import additional plugins in sequence
-    await import('@citation-js/plugin-bibtex');
-    await new Promise(resolve => setTimeout(resolve, 30));
-    
-    await import('@citation-js/plugin-doi');
-    await new Promise(resolve => setTimeout(resolve, 30));
-    
-    // Step 4: Wait for registry to become available with retry logic
-    await this.waitForRegistry();
-    
-    // Step 5: Create Cite instance only after successful plugin registration
-    // Pass an empty array to satisfy constructor parameter requirement
-    this.citeInstance = new Cite([]);
+    try {
+      // Step 1: Import core and get plugins registry
+      const { Cite } = await import('@citation-js/core');
+      
+      // Step 2: Import plugins in sequence with forced await between them
+      await import('@citation-js/plugin-csl');
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      await import('@citation-js/plugin-bibtex');
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      await import('@citation-js/plugin-doi');
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Step 3: Wait for registry to become available with retry logic
+      await this.waitForRegistry();
+      
+      // Step 4: Create Cite instance only after successful plugin registration
+      // Use minimal citation to ensure proper initialization
+      this.citeInstance = new Cite({
+        type: 'article-journal',
+        title: 'Test Citation',
+        author: [{ given: 'Test', family: 'Author' }],
+        issued: { 'date-parts': [[2023]] }
+      });
+      
+      console.log('Plugins loaded successfully');
+    } catch (error) {
+      console.error('Failed to load Citation.js plugins:', error);
+      throw new Error('Failed to load Citation.js plugins');
+    }
   }
   
   private citeInstance: any;
@@ -440,14 +450,47 @@ class UnifiedStyleService {
     return descriptions[categoryId] || `Citation styles in the ${this.formatCategoryName(categoryId)} category`;
   }
 
-  async getStyle(styleId: string): Promise<EnhancedStyleMetadata> {
-    if (!this.initialized) await this.initialize();
-    
-    const style = this.styles.get(styleId);
-    if (!style) {
-      throw new Error(`Style ${styleId} not found`);
+  async getStyle(styleId: string): Promise<EnhancedStyleMetadata | null> {
+    try {
+      // Initialize if not already done
+      if (!this.initialized) {
+        await this.initialize();
+      }
+      
+      // Check if we already have the style in our metadata collection
+      if (this.styles.has(styleId)) {
+        return this.styles.get(styleId) || null;
+      }
+      
+      // Try to load the style directly since it might not be in our metadata collection
+      const core = await import('@citation-js/core');
+      const { plugins } = core;
+      const styles = plugins.config.get('@csl/styles');
+      
+      if (!styles || !styles[styleId]) {
+        // Try loading a fallback style if the requested one isn't available
+        if (styleId !== 'apa' && this.styles.has('apa')) {
+          console.warn(`Style '${styleId}' not found, falling back to APA style`);
+          return this.styles.get('apa') || null;
+        }
+        
+        console.error(`Style '${styleId}' not found and no fallback available`);
+        return null;
+      }
+      
+      // If the style exists but wasn't in our metadata collection, extract its metadata now
+      try {
+        const metadata = await this.extractStyleMetadata(styleId, styles[styleId]);
+        this.styles.set(styleId, metadata);
+        return metadata;
+      } catch (error) {
+        console.error(`Failed to extract metadata for style '${styleId}':`, error);
+        return null;
+      }
+    } catch (error) {
+      console.error(`Error retrieving style '${styleId}':`, error);
+      return null;
     }
-    return style;
   }
 
   async getAllStyles(): Promise<EnhancedStyleMetadata[]> {

@@ -87,9 +87,10 @@ const sourceTypes: SourceType[] = [
 interface SourceTypeSelectorProps {
   selectedType: string;
   onTypeChange: (type: string) => void;
+  disabled?: boolean;
 }
 
-export function SourceTypeSelector({ selectedType, onTypeChange }: SourceTypeSelectorProps) {
+export function SourceTypeSelector({ selectedType, onTypeChange, disabled = false }: SourceTypeSelectorProps) {
   const [formData, setFormData] = useState(() => {
     return {
       title: '',
@@ -107,12 +108,13 @@ export function SourceTypeSelector({ selectedType, onTypeChange }: SourceTypeSel
           return (
             <button
               key={type.id}
-              onClick={() => onTypeChange(type.id)}
-              className={`p-4 rounded-lg border-2 transition-all hover:shadow-md
+              onClick={() => !disabled && onTypeChange(type.id)}
+              className={`p-4 rounded-lg border-2 transition-all ${!disabled ? 'hover:shadow-md' : 'cursor-not-allowed opacity-70'}
                 ${selectedType === type.id
                   ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
                   : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'
                 }`}
+              disabled={disabled}
             >
               <div className="flex items-center space-x-3">
                 <Icon className="h-6 w-6 text-gray-600 dark:text-gray-400" />

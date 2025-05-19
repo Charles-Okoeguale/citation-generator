@@ -75,44 +75,52 @@ export async function POST(req: Request) {
 }
 
 // PUT - Update a citation
-export async function PUT(req: Request) {
+export async function PUT(request: Request) {
   try {
     const session : any = await getServerSession(authOptions);
-
-    if (!session?.user?.id) {
+    
+    if (!session?.user?.email) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const body = await req.json();
-    const { ...updateData } = citationSchema.parse(body);
-    const { id } = body;
-
-    // Verify ownership
+    
+    const data = await request.json();
+    const { id, title, sourceType, citationData, style, authors = [] } = data;
+    
+    if (!id) {
+      return NextResponse.json({ error: 'Citation ID is required' }, { status: 400 });
+    }
+    
+    // Verify that the citation belongs to the current user
     const existingCitation = await db.savedCitation.findFirst({
       where: {
         id,
-        userId: session.user.id,
-      },
+        userId: session.user.id
+      }
     });
-
+    
     if (!existingCitation) {
-      return NextResponse.json(
-        { error: 'Citation not found or unauthorized' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Citation not found or you do not have permission to edit it' }, { status: 404 });
     }
-
+    
+    // Update the citation
     const updatedCitation = await db.savedCitation.update({
-      where: { id },
-      data: updateData,
+      where: {
+        id
+      },
+      data: {
+        title,
+        sourceType,
+        citationData,
+        style,
+        authors,
+        updatedAt: new Date()
+      }
     });
-
+    
     return NextResponse.json(updatedCitation);
   } catch (error) {
-    console.error('Failed to update citation:', error);
-    return NextResponse.json(
-      { error: 'Failed to update citation' },
-      { status: 500 }
-    );
+    console.error('Error updating citation:', error);
+    return NextResponse.json({ error: 'Failed to update citation' }, { status: 500 });
   }
 }
 
