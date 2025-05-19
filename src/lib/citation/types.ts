@@ -117,14 +117,6 @@ export interface FormatPreferences {
   autoSave: boolean;
 }
 
-export type ExportFormat = 'pdf' | 'word' | 'bibtex' | 'ris';
-
-export interface UserExportPreferences {
-  defaultExportFormat?: ExportFormat;
-  includeInText: boolean;
-  recentExportFormats: ExportFormat[];
-}
-
 export type StyleField = 
   | 'author'
   | 'title'

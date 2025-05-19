@@ -143,39 +143,38 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsGenerating(true);
-
-    // Validate form data
-    if (!formData.title) {
-      toast.error('Title is required');
-      setIsGenerating(false);
+    
+    // Validate required fields
+    if (!validateForm()) {
+      toast.error('Please fill in all required fields');
       return;
     }
-
+    
+    setIsGenerating(true);
+    
     try {
-      // Make sure service is initialized
-      if (!isServiceInitialized) {
-        await citationService.initialize();
+      // Show loading state
+      toast.loading('Generating citation...', { id: 'citationToast' });
+      
+      // Create citation input from form data
+      const citationInput = createCitationInput();
+      
+      if (!citationInput) {
+        toast.error('Failed to create citation input', { id: 'citationToast' });
+        setIsGenerating(false);
+        return;
       }
-
-      // Create a citation input with the sourceType and form data
-      const citationInput: CitationInput = {
-        type: sourceType,
-        title: formData.title || 'Untitled',
-        ...formData
-      };
-
-      // Log data for debugging
-      console.log('Generating citation with data:', citationInput);
-      console.log('Using style:', selectedStyle);
-
+      
+      // Generate citation
       const citation = await citationService.generateCitation(
         citationInput,
-        selectedStyle
+        selectedStyle || "apa"
       );
       
       if (!citation) {
-        throw new Error('Failed to generate citation - empty result');
+        toast.error('Failed to generate citation', { id: 'citationToast' });
+        setIsGenerating(false);
+        return;
       }
       
       setGeneratedCitation(citation);
@@ -186,10 +185,10 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
         await saveForm();
       }
       
-      toast.success('Citation generated successfully');
+      toast.success('Citation generated successfully', { id: 'citationToast' });
     } catch (error) {
-      console.error('Citation generation error:', error);
-      toast.error(`Failed to generate citation: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error('Error during citation generation:', error);
+      toast.error('An error occurred while processing your citation', { id: 'citationToast' });
     } finally {
       setIsGenerating(false);
     }
@@ -224,13 +223,61 @@ export function CitationForm({ initialData, citationId, isEditing = false }: Cit
         throw new Error('Failed to update citation');
       }
       
-      toast.success('Citation updated successfully');
+      toast.success('Citation updated successfully', { id: 'citationToast' });
     } catch (error) {
       console.error('Error updating citation:', error);
-      toast.error('Failed to update citation');
+      toast.error('Failed to update citation', { id: 'citationToast' });
     } finally {
       setIsSaving(false);
     }
+  };
+
+  // Update the validateForm function to return a boolean
+  const validateForm = () => {
+    let isValid = true;
+    const updatedErrors: Record<string, string> = {};
+    
+    // Check required fields based on source type
+    Object.values(formConfig.sections || {}).forEach((section) => {
+      section.fields.forEach((fieldName) => {
+        const fieldConfig = formConfig.fields[fieldName];
+        
+        // Skip validation for fields that aren't required
+        if (!fieldConfig.required) return;
+        
+        const value = formData[fieldName];
+        
+        // Special case for authorList type fields
+        if (fieldConfig.type === 'author-list') {
+          const authors = value as any[] || [];
+          if (authors.length === 0) {
+            updatedErrors[fieldName] = `${fieldConfig.label} is required`;
+            isValid = false;
+          }
+        } 
+        // For other field types
+        else if (!value || (typeof value === 'string' && value.trim() === '')) {
+          updatedErrors[fieldName] = `${fieldConfig.label} is required`;
+          isValid = false;
+        }
+      });
+    });
+    
+    // Update errors state
+    // Assuming you have a setErrors function to update the errors state
+    // setErrors(updatedErrors);
+    return isValid;
+  };
+
+  // Update the createCitationInput function
+  const createCitationInput = () => {
+    // Implement the logic to create a citation input based on the current form data
+    // This is a placeholder and should be replaced with the actual implementation
+    return {
+      type: sourceType,
+      title: formData.title || 'Untitled',
+      ...formData
+    };
   };
 
   return (

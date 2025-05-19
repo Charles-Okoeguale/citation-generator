@@ -528,13 +528,13 @@ class UnifiedStyleService {
   async validateStyle(styleId: string): Promise<StyleValidationResult> {
     if (!this.initialized) await this.initialize();
     
-    const style = await this.getStyle(styleId);
+    const style : any = await this.getStyle(styleId);
     const errors: StyleValidationError[] = [];
     const warnings: StyleValidationWarning[] = [];
 
     try {
       // Validate style existence
-      const styleData = await this.loadStyle(styleId);
+      const styleData : any = await this.loadStyle(styleId);
       
       // Check required properties
       if (!styleData.citation) {
@@ -581,7 +581,7 @@ class UnifiedStyleService {
   async checkForUpdates(styleId: string): Promise<StyleUpdateInfo> {
     if (!this.initialized) await this.initialize();
     
-    const style = await this.getStyle(styleId);
+    const style : any= await this.getStyle(styleId);
     
     if (this.lastUpdateCheck && 
         (new Date().getTime() - this.lastUpdateCheck.getTime()) < 3600000) {

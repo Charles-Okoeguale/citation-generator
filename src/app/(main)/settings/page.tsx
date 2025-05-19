@@ -6,8 +6,6 @@ import { useRouter } from 'next/navigation';
 import { Sun, Moon, LogOut, Save } from 'lucide-react';
 import { useLocalStorage } from '@/lib/hooks/use-local-storage';
 import { useTheme } from '@/lib/contexts/theme-context';
-import { useExportPreferences } from '@/lib/citation/hooks/useExportPreferences';
-import type { ExportFormat } from '@/lib/citation/types';
 
 interface UserSettings {
   defaultStyle: string;
@@ -26,7 +24,6 @@ export default function SettingsPage() {
   const { theme, setTheme, toggleTheme } = useTheme();
   const [citationsPerPage, setCitationsPerPage] = useLocalStorage<number>('citationsPerPage', 10);
   const [message, setMessage] = useState<{type: 'success' | 'error', text: string} | null>(null);
-  const { preferences: exportPreferences, setDefaultExportFormat, setIncludeInText } = useExportPreferences();
 
   // Redirect if not authenticated
   useEffect(() => {
@@ -140,71 +137,6 @@ export default function SettingsPage() {
           {/* ... existing settings ... */}
         </div>
         
-        {/* Export Format Preferences */}
-        <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Export Format Preferences</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Default Export Format
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {[
-                  { id: 'pdf', label: 'PDF', icon: '📄' },
-                  { id: 'word', label: 'Word', icon: '📝' },
-                  { id: 'bibtex', label: 'BibTeX', icon: '📚' },
-                  { id: 'ris', label: 'RIS', icon: '📋' },
-                ].map((format) => (
-                  <button
-                    key={format.id}
-                    onClick={() => setDefaultExportFormat(format.id as ExportFormat)}
-                    className={`
-                      flex items-center justify-center py-2 px-3 rounded-md border transition-colors
-                      ${exportPreferences.defaultExportFormat === format.id
-                        ? 'border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-300'
-                      }
-                    `}
-                  >
-                    <span className="mr-1">{format.icon}</span>
-                    <span>{format.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="include-intext-setting"
-                checked={exportPreferences.includeInText}
-                onChange={(e) => setIncludeInText(e.target.checked)}
-                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
-              />
-              <label htmlFor="include-intext-setting" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                Include in-text citations in exports by default
-              </label>
-            </div>
-            
-            {exportPreferences.recentExportFormats.length > 0 && (
-              <div>
-                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Recently Used Formats</h3>
-                <div className="flex flex-wrap gap-2">
-                  {exportPreferences.recentExportFormats.map((format) => (
-                    <div 
-                      key={format} 
-                      className="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded dark:bg-gray-700 dark:text-gray-300"
-                    >
-                      {format.toUpperCase()}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        
         {/* Appearance */}
         <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
           <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Appearance</h2>
@@ -249,6 +181,34 @@ export default function SettingsPage() {
             <span>Sign out</span>
           </button>
         </div>
+        
+        {/* Save Button */}
+        <div className="flex justify-end">
+          <button
+            onClick={saveSettings}
+            disabled={saving}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+          >
+            {saving ? (
+              <>
+                <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Saving...</span>
+              </>
+            ) : (
+              <>
+                <Save size={16} />
+                <span>Save Settings</span>
+              </>
+            )}
+          </button>
+        </div>
+        
+        {/* Message */}
+        {message && (
+          <div className={`px-4 py-3 rounded-md ${message.type === 'success' ? 'bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-300'}`}>
+            {message.text}
+          </div>
+        )}
       </div>
     </div>
   );
