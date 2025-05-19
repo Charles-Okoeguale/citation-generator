@@ -1,4 +1,4 @@
-// src/lib/citation/style-loader.ts
+'use server';
 import fs from 'fs';
 import path from 'path';
 import { StyleMetadata } from './style-service';

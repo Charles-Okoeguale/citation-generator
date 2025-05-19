@@ -2,12 +2,13 @@
   "name": "citation-generator",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "fetch-styles": "ts-node scripts/fetch-csl-styles.ts",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run fetch-styles && next build",
     "start": "next start",
-    "lint": "next lint",
-    "fetch-styles": "ts-node scripts/fetch-csl-styles.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.9.1",
@@ -23,6 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "docx": "^8.5.0",
+    "framer-motion": "^12.12.1",
     "jspdf": "^2.5.1",
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
@@ -31,6 +33,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.3",
     "react-hot-toast": "^2.5.2",
+    "server-only": "^0.0.1",
     "tailwind-merge": "^3.3.0",
     "zod": "^3.24.4"
   },

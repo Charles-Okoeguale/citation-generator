@@ -1,0 +1,4199 @@
+{
+  "academy-of-management-review": {
+    "id": "academy-of-management-review",
+    "title": "Academy of Management Review",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "accident-analysis-and-prevention": {
+    "id": "accident-analysis-and-prevention",
+    "title": "Accident Analysis and Prevention",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aci-materials-journal": {
+    "id": "aci-materials-journal",
+    "title": "ACI Materials Journal",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acm-sig-proceedings-long-author-list": {
+    "id": "acm-sig-proceedings-long-author-list",
+    "title": "ACM SIG Proceedings (\"et al.\" for 15+ authors)",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acm-sig-proceedings": {
+    "id": "acm-sig-proceedings",
+    "title": "ACM SIG Proceedings (\"et al.\" for 3+ authors)",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acm-sigchi-proceedings-extended-abstract-format": {
+    "id": "acm-sigchi-proceedings-extended-abstract-format",
+    "title": "ACM SIGCHI Proceedings - Extended Abstract Format",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acm-sigchi-proceedings": {
+    "id": "acm-sigchi-proceedings",
+    "title": "ACM SIGCHI Proceedings (2016)",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acm-siggraph": {
+    "id": "acm-siggraph",
+    "title": "ACM SIGGRAPH",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acme-an-international-journal-for-critical-geographies": {
+    "id": "acme-an-international-journal-for-critical-geographies",
+    "title": "ACME: An International Journal for Critical Geographies",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-adriatica": {
+    "id": "acta-adriatica",
+    "title": "Acta Adriatica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-amazonica": {
+    "id": "acta-amazonica",
+    "title": "Acta Amazonica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-anaesthesiologica-scandinavica": {
+    "id": "acta-anaesthesiologica-scandinavica",
+    "title": "Acta Anaesthesiologica Scandinavica",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-anaesthesiologica-taiwanica": {
+    "id": "acta-anaesthesiologica-taiwanica",
+    "title": "Acta Anaesthesiologica Taiwanica",
+    "description": "A style for some Elsevier journals, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-botanica-croatica": {
+    "id": "acta-botanica-croatica",
+    "title": "Acta Botanica Croatica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-chiropterologica": {
+    "id": "acta-chiropterologica",
+    "title": "Acta Chiropterologica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-chirurgiae-orthopaedicae-et-traumatologiae-cechoslovaca": {
+    "id": "acta-chirurgiae-orthopaedicae-et-traumatologiae-cechoslovaca",
+    "title": "Acta chirurgiae orthopaedicae et traumatologiae Čechoslovaca",
+    "description": "",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-hydrotechnica": {
+    "id": "acta-hydrotechnica",
+    "title": "Acta hydrotechnica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-ichthyologica-et-piscatoria": {
+    "id": "acta-ichthyologica-et-piscatoria",
+    "title": "Acta Ichthyologica et Piscatoria",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-medica-peruana": {
+    "id": "acta-medica-peruana",
+    "title": "Acta Médica Peruana",
+    "description": "Estilo de citas y bibliografía de la revista Acta Médica Peruana en estilo Vancouver según lo definido por el International Committee of Medical Journal Editors Uniform Requirements for Manuscripts Submitted to Biomedical Journals: Sample References",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-medica-portuguesa": {
+    "id": "acta-medica-portuguesa",
+    "title": "Acta Médica Portuguesa",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-naturae": {
+    "id": "acta-naturae",
+    "title": "Acta Naturae",
+    "description": "Style for Acta Naturae journal",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-neurobiologiae-experimentalis": {
+    "id": "acta-neurobiologiae-experimentalis",
+    "title": "Acta Neurobiologiae Experimentalis",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-neurochirurgica": {
+    "id": "acta-neurochirurgica",
+    "title": "Acta Neurochirurgica",
+    "description": "Springer Vancouver style - alphabetical",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-ophthalmologica": {
+    "id": "acta-ophthalmologica",
+    "title": "Acta Ophthalmologica",
+    "description": "",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [
+      "sciences",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-ornithologica": {
+    "id": "acta-ornithologica",
+    "title": "Acta Ornithologica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-orthopaedica-belgica": {
+    "id": "acta-orthopaedica-belgica",
+    "title": "Acta Orthopædica Belgica",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-orthopaedica": {
+    "id": "acta-orthopaedica",
+    "title": "Acta Orthopaedica",
+    "description": "Vancouver style adapted to Acta Orthopaedica",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "acta-paediatrica": {
+    "id": "acta-paediatrica",
+    "title": "Acta Paediatrica",
+    "description": "Vancouver style as outlined by International Committee of Medical Journal Editors Uniform Requirements for Manuscripts Submitted to Biomedical Journals: Sample References",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-palaeontologica-polonica": {
+    "id": "acta-palaeontologica-polonica",
+    "title": "Acta Palaeontologica Polonica",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-pharmaceutica-sinica-b": {
+    "id": "acta-pharmaceutica-sinica-b",
+    "title": "Acta Pharmaceutica Sinica B",
+    "description": "A style for some Elsevier journals, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-pharmaceutica": {
+    "id": "acta-pharmaceutica",
+    "title": "Acta Pharmaceutica",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-philosophica": {
+    "id": "acta-philosophica",
+    "title": "Acta Philosophica",
+    "description": "Acta Philosophica journal’s citation style: footnotes citation style plus full bibliography (available customized locales:it,en,es,fr,de)",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-physica-sinica": {
+    "id": "acta-physica-sinica",
+    "title": "Acta Physica Sinica (物理学报)",
+    "description": "The Chinese GB/T 7714-2015 numeric style",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-physiologica": {
+    "id": "acta-physiologica",
+    "title": "Acta Physiologica",
+    "description": "Superscript Vancouver style for Acta Physiologica",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-polytechnica": {
+    "id": "acta-polytechnica",
+    "title": "Acta Polytechnica",
+    "description": "Style for journal Acta Polytechnica",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-radiologica": {
+    "id": "acta-radiologica",
+    "title": "Acta Radiologica",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-scientiae-veterinariae": {
+    "id": "acta-scientiae-veterinariae",
+    "title": "Acta Scientiae Veterinariae",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-societatis-botanicorum-poloniae": {
+    "id": "acta-societatis-botanicorum-poloniae",
+    "title": "Acta Societatis Botanicorum Poloniae",
+    "description": "Modified default Vancouver style available at Zotero, for Acta Societatis Botanicorum Poloniae Journal (published by Polish Botanical Society)",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-universitatis-agriculturae-et-silviculturae-mendelianae-brunensis": {
+    "id": "acta-universitatis-agriculturae-et-silviculturae-mendelianae-brunensis",
+    "title": "Acta Universitatis Agriculturae et Silviculturae Mendelianae Brunensis",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-universitatis-agriculturae-sueciae": {
+    "id": "acta-universitatis-agriculturae-sueciae",
+    "title": "Acta Universitatis Agriculturae Sueciae (Swedish University of Agricultural Sciences)",
+    "description": "Style as per the May 2019 guidelines.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "acta-zoologica-academiae-scientiarum-hungaricae": {
+    "id": "acta-zoologica-academiae-scientiarum-hungaricae",
+    "title": "Acta Zoologica Academiae Scientiarum Hungaricae",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "administrative-science-quarterly": {
+    "id": "administrative-science-quarterly",
+    "title": "Administrative Science Quarterly",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-engineering-materials": {
+    "id": "advanced-engineering-materials",
+    "title": "Advanced Engineering Materials",
+    "description": "A style for Wiley-VCH's journal \"Advanced Engineering Materials\"",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "sciences",
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-functional-materials": {
+    "id": "advanced-functional-materials",
+    "title": "Advanced Functional Materials",
+    "description": "Style for the Wiley Journal Advanced Functional Materials",
+    "tags": [
+      "numeric",
+      "doi-support"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-healthcare-materials": {
+    "id": "advanced-healthcare-materials",
+    "title": "Advanced Healthcare Materials",
+    "description": "A style for Wiley-VCH's journal \"Advanced Healthcare Materials\". This style has many limits due to csl constraints, most notably the inability to include pages/page ranges for books, the wrong square brackets for two items cited together, and the lack of support for citing 1a)... b)...c)....",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-materials": {
+    "id": "advanced-materials",
+    "title": "Advanced Materials",
+    "description": "A style for Wiley's Advanced Materials",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-optical-materials": {
+    "id": "advanced-optical-materials",
+    "title": "Advanced Optical Materials",
+    "description": "A style for Wiley's Advanced Optical Materials",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-pharmaceutical-bulletin": {
+    "id": "advanced-pharmaceutical-bulletin",
+    "title": "Advanced Pharmaceutical Bulletin",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advanced-science": {
+    "id": "advanced-science",
+    "title": "Advanced Science",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "advances-in-alzheimers-disease": {
+    "id": "advances-in-alzheimers-disease",
+    "title": "Advances in Alzheimer's Disease",
+    "description": "Vancouver-style bibliographic ordering.",
+    "tags": [
+      "numeric",
+      "doi-support"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "advances-in-complex-systems": {
+    "id": "advances-in-complex-systems",
+    "title": "Advances in Complex Systems",
+    "description": "",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aerosol-and-air-quality-research": {
+    "id": "aerosol-and-air-quality-research",
+    "title": "Aerosol and Air Quality Research",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aerosol-science-and-technology": {
+    "id": "aerosol-science-and-technology",
+    "title": "Aerosol Science and Technology",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aerospace-medicine-and-human-performance": {
+    "id": "aerospace-medicine-and-human-performance",
+    "title": "Aerospace Medicine and Human Performance",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "african-journal-of-marine-science": {
+    "id": "african-journal-of-marine-science",
+    "title": "African Journal of Marine Science",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "african-online-scientific-information-systems-harvard": {
+    "id": "african-online-scientific-information-systems-harvard",
+    "title": "African Online Scientific Information Systems - Harvard",
+    "description": "Style for AOSIS Publishing's Harvard style as per 13 April 2017.",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "african-online-scientific-information-systems-vancouver": {
+    "id": "african-online-scientific-information-systems-vancouver",
+    "title": "African Online Scientific Information Systems - Vancouver",
+    "description": "Vancouver-like style for AOSIS Publishing as per 13 April 2017.",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "african-zoology": {
+    "id": "african-zoology",
+    "title": "African Zoology",
+    "description": "",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "afro-asia": {
+    "id": "afro-asia",
+    "title": "Afro-Ásia (Português - Brasil)",
+    "description": "Estilo de citação em nota da Revista Afro-Ásia (ISSN 1981-1411 | 0002-0591). Versão 1.0",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "age-and-ageing": {
+    "id": "age-and-ageing",
+    "title": "Age and Ageing",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "ageing-and-society": {
+    "id": "ageing-and-society",
+    "title": "Ageing & Society",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aging-and-disease": {
+    "id": "aging-and-disease",
+    "title": "Aging and Disease",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aging-cell": {
+    "id": "aging-cell",
+    "title": "Aging Cell",
+    "description": "The Aging Cell style",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aging": {
+    "id": "aging",
+    "title": "Aging",
+    "description": "Vancouver style with only year/volume and et al after 13 authors",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "agora": {
+    "id": "agora",
+    "title": "Agora",
+    "description": "",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "agriculturae-conspectus-scientificus": {
+    "id": "agriculturae-conspectus-scientificus",
+    "title": "Agriculturae Conspectus Scientificus",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aib-studi": {
+    "id": "aib-studi",
+    "title": "AIB studi (Italiano)",
+    "description": "Una rivista quadrimestrale pubblicata dall'Associazione italiana biblioteche (AIB).",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aids": {
+    "id": "aids",
+    "title": "AIDS",
+    "description": "Vancouver style adapted for AIDS",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aims-press": {
+    "id": "aims-press",
+    "title": "AIMS Press",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aix-marseille-universite-departement-d-etudes-asiatiques": {
+    "id": "aix-marseille-universite-departement-d-etudes-asiatiques",
+    "title": "Aix-Marseille Université - Département d'études asiatiques (Français)",
+    "description": "",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "al-jamiah-journal-of-islamic-studies": {
+    "id": "al-jamiah-journal-of-islamic-studies",
+    "title": "Al-Jami'ah - Journal of Islamic Studies",
+    "description": "note with bibliography (adapted-modified from several sources)",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "alcohol-and-alcoholism": {
+    "id": "alcohol-and-alcoholism",
+    "title": "Alcohol and Alcoholism",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "alcoholism-clinical-and-experimental-research": {
+    "id": "alcoholism-clinical-and-experimental-research",
+    "title": "Alcoholism: Clinical and Experimental Research",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "alkoholizmus-a-drogove-zavislosti": {
+    "id": "alkoholizmus-a-drogove-zavislosti",
+    "title": "Alkoholizmus a drogové závislosti",
+    "description": "ADZ journal citation style",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "allergology-international": {
+    "id": "allergology-international",
+    "title": "Allergology International",
+    "description": "A style for some Elsevier journals, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "allergy": {
+    "id": "allergy",
+    "title": "Allergy",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "alternatif-politika": {
+    "id": "alternatif-politika",
+    "title": "Alternatif Politika",
+    "description": "Alternatif Politika author-date style with full first names, https://alternatifpolitika.com/",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities",
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "alternatives-to-animal-experimentation": {
+    "id": "alternatives-to-animal-experimentation",
+    "title": "Alternatives to Animal Experimentation",
+    "description": "Alternatives to Animal Experimentation (ALTEX)",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "ambio": {
+    "id": "ambio",
+    "title": "AMBIO",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "ameghiniana": {
+    "id": "ameghiniana",
+    "title": "Ameghiniana",
+    "description": "The Ameghiniana style.",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-anthropological-association": {
+    "id": "american-anthropological-association",
+    "title": "American Anthropological Association",
+    "description": "Citation style for the American Anthropological Association - Support from the Society for Cultural Anthropology is thankfully acknowledged",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-association-for-cancer-research": {
+    "id": "american-association-for-cancer-research",
+    "title": "American Association for Cancer Research",
+    "description": "Parent style for AACR's journals",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "american-association-of-petroleum-geologists": {
+    "id": "american-association-of-petroleum-geologists",
+    "title": "American Association of Petroleum Geologists",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-chemical-society": {
+    "id": "american-chemical-society",
+    "title": "American Chemical Society",
+    "description": "The American Chemical Society style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-college-of-clinical-pharmacy": {
+    "id": "american-college-of-clinical-pharmacy",
+    "title": "American College of Clinical Pharmacy",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-fisheries-society": {
+    "id": "american-fisheries-society",
+    "title": "American Fisheries Society",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-geophysical-union": {
+    "id": "american-geophysical-union",
+    "title": "American Geophysical Union",
+    "description": "The American Geophysical Union generic style",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-heart-association": {
+    "id": "american-heart-association",
+    "title": "American Heart Association",
+    "description": "The American Heart Association (AHA) style used for fellowship/grant applications.",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-institute-of-aeronautics-and-astronautics": {
+    "id": "american-institute-of-aeronautics-and-astronautics",
+    "title": "American Institute of Aeronautics and Astronautics",
+    "description": "A style for AIAA",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-institute-of-physics": {
+    "id": "american-institute-of-physics",
+    "title": "American Institute of Physics 4th edition",
+    "description": "Common style used by AIP publications.",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-agricultural-economics": {
+    "id": "american-journal-of-agricultural-economics",
+    "title": "American Journal of Agricultural Economics",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-archaeology": {
+    "id": "american-journal-of-archaeology",
+    "title": "American Journal of Archaeology",
+    "description": "The American Journal of Archaeology style",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-botany": {
+    "id": "american-journal-of-botany",
+    "title": "American Journal of Botany",
+    "description": "American Journal of Botany author-date style.",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-cancer-research": {
+    "id": "american-journal-of-cancer-research",
+    "title": "American Journal of Cancer Research",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-climate-change": {
+    "id": "american-journal-of-climate-change",
+    "title": "American Journal of Climate Change",
+    "description": "A style for American Journal of Climate Change that includes article titles in the reference list",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-clinical-pathology": {
+    "id": "american-journal-of-clinical-pathology",
+    "title": "American Journal of Clinical Pathology",
+    "description": "Style used for the ASCP flagship journal American Journal of Clinical Pathology",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-enology-and-viticulture": {
+    "id": "american-journal-of-enology-and-viticulture",
+    "title": "American Journal of Enology and Viticulture",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-epidemiology": {
+    "id": "american-journal-of-epidemiology",
+    "title": "American Journal of Epidemiology",
+    "description": "Style for the Oxford Press Journal AJE based on Vancouver.",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-health-behavior": {
+    "id": "american-journal-of-health-behavior",
+    "title": "American Journal of Health Behavior",
+    "description": "slightly changed AMA variant",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-hypertension": {
+    "id": "american-journal-of-hypertension",
+    "title": "American Journal of Hypertension",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-medical-genetics": {
+    "id": "american-journal-of-medical-genetics",
+    "title": "American Journal of Medical Genetics",
+    "description": "",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-neuroradiology": {
+    "id": "american-journal-of-neuroradiology",
+    "title": "American Journal of Neuroradiology",
+    "description": "The American Journal of Neuroradiology.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-orthodontics-and-dentofacial-orthopedics": {
+    "id": "american-journal-of-orthodontics-and-dentofacial-orthopedics",
+    "title": "American Journal of Orthodontics & Dentofacial Orthopedics",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-plant-sciences": {
+    "id": "american-journal-of-plant-sciences",
+    "title": "American Journal of Plant Sciences",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-political-science": {
+    "id": "american-journal-of-political-science",
+    "title": "American Journal of Political Science",
+    "description": "style for the AJPS Journal published by the midwest political science association, based on the APSA style",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-respiratory-and-critical-care-medicine": {
+    "id": "american-journal-of-respiratory-and-critical-care-medicine",
+    "title": "American Journal of Respiratory and Critical Care Medicine",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-science": {
+    "id": "american-journal-of-science",
+    "title": "American Journal of Science",
+    "description": "Style for AJS based on the US Geological Survey Style.",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-sociology": {
+    "id": "american-journal-of-sociology",
+    "title": "American Journal of Sociology",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-sonography": {
+    "id": "american-journal-of-sonography",
+    "title": "American Journal of Sonography",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-surgical-pathology": {
+    "id": "american-journal-of-surgical-pathology",
+    "title": "American Journal of Surgical Pathology",
+    "description": "AMA version without issue no. and only 4/3 et-al settings",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-journal-of-translational-research": {
+    "id": "american-journal-of-translational-research",
+    "title": "American Journal of Translational Research",
+    "description": "A style for the American Journal of Translational Research based on Elsevier Vancouver/Free Radical Research.",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-marketing-association": {
+    "id": "american-marketing-association",
+    "title": "American Marketing Association",
+    "description": "AMA Reference List Style published by the American Marketing Association",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-10th-edition": {
+    "id": "american-medical-association-10th-edition",
+    "title": "American Medical Association 10th edition",
+    "description": "The American Medical Association style as used in JAMA.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-alphabetical": {
+    "id": "american-medical-association-alphabetical",
+    "title": "American Medical Association 11th edition (sorted alphabetically)",
+    "description": "The American Medical Association style as used in JAMA, with alphabetically sorted bibliography. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-brackets": {
+    "id": "american-medical-association-brackets",
+    "title": "American Medical Association 11th edition (brackets)",
+    "description": "The American Medical Association style as used in JAMA. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-no-et-al": {
+    "id": "american-medical-association-no-et-al",
+    "title": "American Medical Association 11th edition (no \"et al.\")",
+    "description": "The American Medical Association style as used in JAMA, without et al. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-no-url-alphabetical": {
+    "id": "american-medical-association-no-url-alphabetical",
+    "title": "American Medical Association 11th edition (no URL, sorted alphabetically)",
+    "description": "The American Medical Association style as used in JAMA, without the URL. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-no-url": {
+    "id": "american-medical-association-no-url",
+    "title": "American Medical Association 11th edition (no URL)",
+    "description": "The American Medical Association style as used in JAMA, without the URL. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association-parentheses": {
+    "id": "american-medical-association-parentheses",
+    "title": "American Medical Association 11th edition (parentheses)",
+    "description": "The American Medical Association style as used in JAMA. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-medical-association": {
+    "id": "american-medical-association",
+    "title": "American Medical Association 11th edition",
+    "description": "The American Medical Association style as used in JAMA. Version 11 as per November-2019.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-meteorological-society": {
+    "id": "american-meteorological-society",
+    "title": "American Meteorological Society",
+    "description": "A style for all journals by the American Meteorological Society",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-mineralogist": {
+    "id": "american-mineralogist",
+    "title": "American Mineralogist",
+    "description": "",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-nuclear-society": {
+    "id": "american-nuclear-society",
+    "title": "American Nuclear Society",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-physical-society-et-al": {
+    "id": "american-physical-society-et-al",
+    "title": "American Physical Society - et al. (if more than 3 authors)",
+    "description": "Short variant (first author et al., if more than 3 authors) of the American Physical Society (APS) citation style. Volume is bold and year comes last in normal brackets.",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-physics-society-without-titles": {
+    "id": "american-physics-society-without-titles",
+    "title": "American Physical Society (without titles)",
+    "description": "Common style use by APS publications, without article titles.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-physics-society": {
+    "id": "american-physics-society",
+    "title": "American Physical Society",
+    "description": "Common style use by APS publications.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-physiological-society": {
+    "id": "american-physiological-society",
+    "title": "American Physiological Society",
+    "description": "A style for many APS journals",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-phytopathological-society": {
+    "id": "american-phytopathological-society",
+    "title": "American Phytopathological Society",
+    "description": "The American Phytopathological Society style.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-political-science-association": {
+    "id": "american-political-science-association",
+    "title": "American Political Science Association",
+    "description": "The American Political Science Association style. Et al rules based on published APSR articles",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-school-of-classical-studies-at-athens": {
+    "id": "american-school-of-classical-studies-at-athens",
+    "title": "American School of Classical Studies at Athens",
+    "description": "Reference style for ASCSA manuscripts and Hesperia journal articles.",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-society-for-horticultural-science": {
+    "id": "american-society-for-horticultural-science",
+    "title": "American Society for Horticultural Science",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-society-for-microbiology": {
+    "id": "american-society-for-microbiology",
+    "title": "American Society for Microbiology",
+    "description": "Style for all American Society for Microbiology journals.",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-society-for-pharmacology-and-experimental-therapeutics": {
+    "id": "american-society-for-pharmacology-and-experimental-therapeutics",
+    "title": "American Society for Pharmacology and Experimental Therapeutics",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-society-of-agricultural-and-biological-engineers": {
+    "id": "american-society-of-agricultural-and-biological-engineers",
+    "title": "American Society of Agricultural and Biological Engineers",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-society-of-civil-engineers": {
+    "id": "american-society-of-civil-engineers",
+    "title": "American Society of Civil Engineers",
+    "description": "A style for American Society of Civil Engineers publications",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-society-of-mechanical-engineers": {
+    "id": "american-society-of-mechanical-engineers",
+    "title": "American Society of Mechanical Engineers",
+    "description": "A style for the ASME's 23 journals",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-sociological-association": {
+    "id": "american-sociological-association",
+    "title": "American Sociological Association 6th/7th edition",
+    "description": "The ASA style following the 6th/7th edition of the Style Guide (reference formatting is the same for both editions).",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-statistical-association": {
+    "id": "american-statistical-association",
+    "title": "American Statistical Association",
+    "description": "A style for the American Statistical Association used for all their journals.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "american-veterinary-medical-association": {
+    "id": "american-veterinary-medical-association",
+    "title": "American Veterinary Medical Association",
+    "description": "Based on AMA with strip-periods on journal abbreviations and et al for >3 authors",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "amerindia": {
+    "id": "amerindia",
+    "title": "Amerindia",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "amphibia-reptilia": {
+    "id": "amphibia-reptilia",
+    "title": "Amphibia-Reptilia",
+    "description": "",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "amsterdam-university-press-academic": {
+    "id": "amsterdam-university-press-academic",
+    "title": "Amsterdam University Press - Academic",
+    "description": "AUP format with full notes and bibliography",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anabases": {
+    "id": "anabases",
+    "title": "Anabases",
+    "description": "En cas de réédition du volume, la mention de la première édition est automatiquement en français; la date de première édition doit être entrée dans le champ 'Extra' sous la forme 'Original Date: [date]' (voir https://www.zotero.org/support/kb/item_types_and_fields#citing_fields_from_extra). Pour les ouvrages à caractère de source ou publiés avant 1800, le nom de l’imprimeur ou de l’éditeur doit toujours être spécifié manuellement.",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anaesthesia": {
+    "id": "anaesthesia",
+    "title": "Anaesthesia",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anais-da-academia-brasileira-de-ciencias": {
+    "id": "anais-da-academia-brasileira-de-ciencias",
+    "title": "Anais da Academia Brasileira de Ciências",
+    "description": "Annals of the Brazilian Academy of Sciences author-date style",
+    "tags": [
+      "author-date"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "analytical-sciences": {
+    "id": "analytical-sciences",
+    "title": "Analytical Sciences",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anatomical-sciences-education": {
+    "id": "anatomical-sciences-education",
+    "title": "Anatomical Sciences Education",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "ancilla-iuris": {
+    "id": "ancilla-iuris",
+    "title": "Ancilla Iuris",
+    "description": "The Ancilla Iuris citation style (based on its Style Guide for Authors)",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "andean-geology": {
+    "id": "andean-geology",
+    "title": "Andean Geology",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anesthesia-and-analgesia": {
+    "id": "anesthesia-and-analgesia",
+    "title": "Anesthesia and Analgesia",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anesthesiology": {
+    "id": "anesthesiology",
+    "title": "Anesthesiology",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "angewandte-chemie": {
+    "id": "angewandte-chemie",
+    "title": "Angewandte Chemie International Edition",
+    "description": "A style for Wiley-VCH's journal \"Angewandte Chemie International Edition\"\nThis style has many limits due to csl constraints, most notably the inability to include pages/page ranges for books, the wrong square brackets for two items cited together, and the lack of support for citing 1a)... b)...c)....",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "angiologia": {
+    "id": "angiologia",
+    "title": "Angiologia (Español)",
+    "description": "A style for some Elsevier journals, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "angiology": {
+    "id": "angiology",
+    "title": "Angiology",
+    "description": "Vancouver superscript style modified for Angiology",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anglia": {
+    "id": "anglia",
+    "title": "Anglia",
+    "description": "The reference style of the journal Anglia.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "animal-conservation": {
+    "id": "animal-conservation",
+    "title": "Animal Conservation",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "animal-migration": {
+    "id": "animal-migration",
+    "title": "Animal Migration",
+    "description": "",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "sciences",
+      "engineering"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "animal-welfare": {
+    "id": "animal-welfare",
+    "title": "Animal Welfare",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "animal": {
+    "id": "animal",
+    "title": "animal",
+    "description": "Style for animal based on the guidelines from 02/02/2024.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annalen-des-naturhistorischen-museums-in-wien": {
+    "id": "annalen-des-naturhistorischen-museums-in-wien",
+    "title": "Annalen des Naturhistorischen Museums in Wien",
+    "description": "Style for Annalen des Naturhistorischen Museums in Wien",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annales-de-demographie-historique": {
+    "id": "annales-de-demographie-historique",
+    "title": "Annales de démographie historique",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annales": {
+    "id": "annales",
+    "title": "Annales. Histoire, Sciences sociales (Français)",
+    "description": "",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-allergy-asthma-and-immunology": {
+    "id": "annals-of-allergy-asthma-and-immunology",
+    "title": "Annals of Allergy, Asthma & Immunology",
+    "description": "AMA style with et-al set to 6/7",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-applied-biology": {
+    "id": "annals-of-applied-biology",
+    "title": "Annals of Applied Biology",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-behavioral-medicine": {
+    "id": "annals-of-behavioral-medicine",
+    "title": "Annals of Behavioral Medicine",
+    "description": "",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "psychology",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-biomedical-engineering": {
+    "id": "annals-of-biomedical-engineering",
+    "title": "Annals of Biomedical Engineering",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "engineering",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-botany": {
+    "id": "annals-of-botany",
+    "title": "Annals of Botany",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-eye-science": {
+    "id": "annals-of-eye-science",
+    "title": "Annals of Eye Science",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences",
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-joint": {
+    "id": "annals-of-joint",
+    "title": "Annals of Joint",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-laboratory-medicine": {
+    "id": "annals-of-laboratory-medicine",
+    "title": "Annals of Laboratory Medicine",
+    "description": "Annals of Laboratory Medicine style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-neurology": {
+    "id": "annals-of-neurology",
+    "title": "Annals of Neurology",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-oncology": {
+    "id": "annals-of-oncology",
+    "title": "Annals of Oncology",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-public-and-cooperative-economics": {
+    "id": "annals-of-public-and-cooperative-economics",
+    "title": "Annals of Public and Cooperative Economics",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-surgery": {
+    "id": "annals-of-surgery",
+    "title": "Annals of Surgery",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-the-association-of-american-geographers": {
+    "id": "annals-of-the-association-of-american-geographers",
+    "title": "Annals of the Association of American Geographers",
+    "description": "The Annals of the Association of American Geographers style.",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-the-new-york-academy-of-sciences": {
+    "id": "annals-of-the-new-york-academy-of-sciences",
+    "title": "Annals of the New York Academy of Sciences",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annals-of-work-exposures-and-health": {
+    "id": "annals-of-work-exposures-and-health",
+    "title": "Annals of Work Exposures and Health",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-review-of-astronomy-and-astrophysics": {
+    "id": "annual-review-of-astronomy-and-astrophysics",
+    "title": "Annual Review of Astronomy and Astrophysics",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-review-of-linguistics": {
+    "id": "annual-review-of-linguistics",
+    "title": "Annual Review of Linguistics",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-review-of-medicine": {
+    "id": "annual-review-of-medicine",
+    "title": "Annual Review of Medicine",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-review-of-nuclear-and-particle-science": {
+    "id": "annual-review-of-nuclear-and-particle-science",
+    "title": "Annual Review of Nuclear and Particle Science",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-reviews-alphabetical": {
+    "id": "annual-reviews-alphabetical",
+    "title": "Annual Reviews (sorted alphabetically)",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-reviews-author-date": {
+    "id": "annual-reviews-author-date",
+    "title": "Annual Reviews (author-date)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-reviews-without-titles": {
+    "id": "annual-reviews-without-titles",
+    "title": "Annual Reviews (sorted by order of appearance, without titles)",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "annual-reviews": {
+    "id": "annual-reviews",
+    "title": "Annual Reviews (sorted by order of appearance)",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "antarctic-science": {
+    "id": "antarctic-science",
+    "title": "Antarctic Science",
+    "description": "Antarctic Science (Cambridge Journals)",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anthropologie-et-societes": {
+    "id": "anthropologie-et-societes",
+    "title": "Anthropologie et Sociétés (Français)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anti-trafficking-review": {
+    "id": "anti-trafficking-review",
+    "title": "Anti-Trafficking Review",
+    "description": "ATR referencing style guide",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "anticancer-research": {
+    "id": "anticancer-research",
+    "title": "Anticancer Research",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "antipode": {
+    "id": "antipode",
+    "title": "Antipode",
+    "description": "Antipode stylesheet based on template at https://mc.manuscriptcentral.com/societyimages/anti/Final%20format%20(papers).doc",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "antiquites-africaines": {
+    "id": "antiquites-africaines",
+    "title": "Antiquités africaines",
+    "description": "Style conçu pour la revue Antiquités africaines. Histoire et archéologie de l’Afrique\n      du Nord, de la protohistoire à la conquête arabe – History and archaeology of North\n      Africa, from protohistory to the Arab conquests. Centre Camille Jullian, CNRS",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "antiquity": {
+    "id": "antiquity",
+    "title": "Antiquity",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-5th-edition": {
+    "id": "apa-5th-edition",
+    "title": "American Psychological Association 5th edition",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-6th-edition-no-ampersand": {
+    "id": "apa-6th-edition-no-ampersand",
+    "title": "American Psychological Association 6th edition (no ampersand)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-6th-edition": {
+    "id": "apa-6th-edition",
+    "title": "American Psychological Association 6th edition",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-annotated-bibliography": {
+    "id": "apa-annotated-bibliography",
+    "title": "American Psychological Association 7th edition (annotated bibliography)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-cv": {
+    "id": "apa-cv",
+    "title": "American Psychological Association 7th edition (curriculum vitae, sorted by descending date)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-eu": {
+    "id": "apa-eu",
+    "title": "American Psychological Association 7th edition (Basque/Euskara)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-fr-provost": {
+    "id": "apa-fr-provost",
+    "title": "American Psychological Association 6th edition (Provost) (Français - Canada)",
+    "description": "Style basé sur la version francophone du livre « Normes de présentation d’un travail de recherche », 4e édition, par Marc A. Provost ... [et al.] selon les normes APA, 6e édition",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-no-ampersand": {
+    "id": "apa-no-ampersand",
+    "title": "American Psychological Association 7th edition (no ampersand)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-no-doi-no-issue": {
+    "id": "apa-no-doi-no-issue",
+    "title": "American Psychological Association 6th edition (no DOIs, no issue numbers)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-no-initials": {
+    "id": "apa-no-initials",
+    "title": "American Psychological Association 7th edition (no initials)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-numeric-superscript-brackets": {
+    "id": "apa-numeric-superscript-brackets",
+    "title": "American Psychological Association 7th edition (numeric, brackets)",
+    "description": "APA style, with numeric in-text citations in brackets",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-numeric-superscript": {
+    "id": "apa-numeric-superscript",
+    "title": "American Psychological Association 7th edition (numeric, superscript)",
+    "description": "APA style, with superscript numeric in-text citations",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-old-doi-prefix": {
+    "id": "apa-old-doi-prefix",
+    "title": "American Psychological Association 6th edition (\"doi:\" DOI prefix)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-single-spaced": {
+    "id": "apa-single-spaced",
+    "title": "American Psychological Association 7th edition (single-spaced bibliography)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-tr": {
+    "id": "apa-tr",
+    "title": "American Psychological Association 6th edition (Türkçe)",
+    "description": "APA’nın Türkçeye uyarlandığı bu çalışma Kurbanoğlu (2004) tarafından hazırlanan “kaynakça gösterme el kitabı”ndan yararlanılmıştır. APA’da kullanılan “and, n.d., et al., p., pp., eds., trans., ed., unpublished” etiketleri sırasıyla “ve, t.y., ve diğerleri, s., ss., ed., çev., bs., yayımlanmamış” şeklinde tercümesi yapılmıştır. Üç ve daha fazla yazarlı eserlerde “and” etiketi önünde kullanılan “,” karakteri kullanılmamıştır. İngilizcede sırasal rakam ile birlikte kullanılan son ek yerine Türkçede geçerli olan “.” işareti kullanılmıştır. APA’da künye içerisinde eserin yayın tarihi, erişim tarihi verilmektedir. Bazı eserlerde yayın tarihi için kullanılan “yıl, ay gün” biçimi APA-TR’de “yıl, gün ay” şeklinde kullanılmıştır. Erişim tarihi için kullanılan “ay gün, yıl” biçimi yerine de “gün ay yıl” biçimi seçilmiştir. APA’da elektronik yayınlarda kullanılan “Retrieved ……… from……..” etiketi yerine “……… tarihinde ……… adresinden erişildi” etiketi kullanılmıştır. CSL dilinde “retrieved”, “from” etiketleri ayrı olduğu için çalışmamızda “retrieved” etiketi “tarihinde”, “from” etiketi ise “adresinden erişildi” şeklinde yerelleştirilmesi yapılmıştır. APA’da bir kitap içerisinde yayımlanan yayına yapılan atıflarda eser adında önce kullanılan “in” etiketi, Türkçeye “içinde” olarak tercümesi yapılmış ve eser adından sonra kullanılmıştır. Dolayısıyla “tarih”, “tarihinde”, “adresinden erişildi”, “içinde” etiketlerinin künye içerisindeki yerleri değiştirilmiştir. Öneriler: “vol., vols.” etiketleri “c.”; toplantı adından önce kullanılan “Presented at the……” ifadesi “…….., sunulmuş bildiri” olarak kullanılmıştır. Çalışmada elektronik kaynaklar ve diğer değişen kurallar için APA’nın 6. versiyondaki kurallar öngörülmüştür. Lütfen tespit ettiğiniz sorunlar ve öneriler için kbinici@atauni.edu.tr adresine yazınız. Kasım Binici.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa-with-abstract": {
+    "id": "apa-with-abstract",
+    "title": "American Psychological Association 7th edition (with abstract)",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "apa": {
+    "id": "apa",
+    "title": "American Psychological Association 7th edition",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "psychology"
+    ],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aporia-the-nursing-journal": {
+    "id": "aporia-the-nursing-journal",
+    "title": "Aporia: The Nursing Journal",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "applied-clay-science": {
+    "id": "applied-clay-science",
+    "title": "Applied Clay Science",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "applied-spectroscopy-reviews": {
+    "id": "applied-spectroscopy-reviews",
+    "title": "Applied Spectroscopy Reviews",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "applied-spectroscopy": {
+    "id": "applied-spectroscopy",
+    "title": "Applied Spectroscopy",
+    "description": "Style for Applied Spectroscopy",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "aquatic-conservation": {
+    "id": "aquatic-conservation",
+    "title": "Aquatic Conservation: Marine and Freshwater Ecosystems",
+    "description": "style for Aquatic Conservation: Marine and Freshwater Ecosystems, derived primarily from Cell and AMA styles",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aquatic-invasions": {
+    "id": "aquatic-invasions",
+    "title": "Aquatic Invasions",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aquatic-living-resources": {
+    "id": "aquatic-living-resources",
+    "title": "Aquatic Living Resources",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "aquitania": {
+    "id": "aquitania",
+    "title": "Aquitania (Français)",
+    "description": "Le style Aquitania est utilisé pour les publications et bibliographies de la revue Aquitania. Il reprend les normes générales diffusées sur le site aquitania.u-bordeaux-montaigne.fr (Décembre 2016)",
+    "tags": [
+      "note"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arachne": {
+    "id": "arachne",
+    "title": "Arachne",
+    "description": "Citation Style of the journal of the German Arachnological Society",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arachnologische-mitteilungen": {
+    "id": "arachnologische-mitteilungen",
+    "title": "Arachnologische Mitteilungen",
+    "description": "Zitierstil der Arachnologischen Mitteilungen (Arachnolgy Letters)",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arachnology": {
+    "id": "arachnology",
+    "title": "Arachnology",
+    "description": "Citation Style of the journal of the British Arachnological Society",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arbok-hins-islenzka-fornleifafelags": {
+    "id": "arbok-hins-islenzka-fornleifafelags",
+    "title": "Árbók Hins íslenzka fornleifafélags (Íslenska)",
+    "description": "",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arcadia-science": {
+    "id": "arcadia-science",
+    "title": "Arcadia Science",
+    "description": "Arcadia's CSL style is a simplified version of the eLife CSL style that can be found on https://github.com/citation-style-language/styles/blob/master/elife.csl and https://citationstyles.org/",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archaeologia-austriaca": {
+    "id": "archaeologia-austriaca",
+    "title": "Archaeologia Austriaca",
+    "description": "",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archaeometry": {
+    "id": "archaeometry",
+    "title": "Archaeometry",
+    "description": "Style for Arhcaeometry Journal",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "engineering"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archaeonautica": {
+    "id": "archaeonautica",
+    "title": "Archaeonautica",
+    "description": "Style conçu pour la revue Archaeonautica. L’archéologie maritime et navale de la préhistoire à l’époque contemporaine. Centre Camille Jullian, CNRS",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archeologia-classica": {
+    "id": "archeologia-classica",
+    "title": "Archeologia Classica (Italiano)",
+    "description": "Foglia di stile per Archeologia Classica. Così com'è, lo stile non risponde alla necessità di tenere il linguaggio di edizione del volume nel chiamare gli editori (hrsg. von per un libro tedesco, éd. per un libro francese, ecc.). Una versione funzionante ma che verrà dichiarata errata da Zotero (vd. https://forums.zotero.org/discussion/comment/255853) è disponibile su richiesta all'autore",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archeologicke-rozhledy": {
+    "id": "archeologicke-rozhledy",
+    "title": "Archeologické rozhledy",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archeologie-medievale": {
+    "id": "archeologie-medievale",
+    "title": "Archéologie médiévale (Français)",
+    "description": "Style auteur-date en note pour Archéologie médiévale. NB: les sources éditées doivent être considérées comme des livres ayant un auteur (médiéval) et un éditeur (contemporain). Pour les sources éditées ne disposant pas d'auteur (médiéval), il est nécessaire de transformer le (dir.) en (éd.). Pour les archives (type=manuscrit), le \"lieu\" correspond au dépôt d'archives, l' \"archive\" au fonds, la \"loc. dans l'archive\" à la cote.",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archeologies-et-sciences-de-lantiquite": {
+    "id": "archeologies-et-sciences-de-lantiquite",
+    "title": "Archéologies et Sciences de l'Antiquité (Français)",
+    "description": "Le style arscan est utilisé pour les publications et bibliographies du laboratoire ArScAn (Archéologies et Sciences de l'Antiquité). Il correspond aux besoins de l'édition en archéologie, histoire de l'art et histoire.",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities",
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archeosciences": {
+    "id": "archeosciences",
+    "title": "ArcheoSciences (Français)",
+    "description": "Style pour ArcheoSciences, revue d'Archéométrie.",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities",
+      "sciences"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archiv-fur-die-civilistische-praxis": {
+    "id": "archiv-fur-die-civilistische-praxis",
+    "title": "Archiv für die civilistische Praxis (Deutsch)",
+    "description": "Use type entry-encopledia for part of \"Gesetzeskommentar\". The style does not need any bibliography, but for completeness (preview) it shows here the appearance of the footnotes.",
+    "tags": [
+      "note"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal"
+    ],
+    "version": "1.0"
+  },
+  "archiv-fur-geschichte-der-philosophie": {
+    "id": "archiv-fur-geschichte-der-philosophie",
+    "title": "Archiv für Geschichte der Philosophie",
+    "description": "Style for Archiv für Geschichte der Philosophie",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archives-of-hand-and-microsurgery": {
+    "id": "archives-of-hand-and-microsurgery",
+    "title": "Archives of Hand and Microsurgery",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archives-of-medical-research": {
+    "id": "archives-of-medical-research",
+    "title": "Archives of Medical Research",
+    "description": "Vancouver style as outlined by International Committee of Medical Journal Editors Uniform Requirements for Manuscripts Submitted to Biomedical Journals: Sample References. Modified from https://github.com/citation-style-language/styles/blob/master/vancouver.csl for Archives of Medical Research",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archives-of-physical-medicine-and-rehabilitation": {
+    "id": "archives-of-physical-medicine-and-rehabilitation",
+    "title": "Archives of Physical Medicine and Rehabilitation",
+    "description": "Vancouver style for APMR",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archivos-de-bronconeumologia": {
+    "id": "archivos-de-bronconeumologia",
+    "title": "Archivos de Bronconeumología",
+    "description": "A style for the Elsevier journal Archivos de Bronconeumología, publishing in Spanish and English",
+    "tags": [
+      "numeric"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archivos-de-la-sociedad-espanola-de-oftalmologia": {
+    "id": "archivos-de-la-sociedad-espanola-de-oftalmologia",
+    "title": "Archivos de la Sociedad Española de Oftalmología (Español)",
+    "description": "A style for some Elsevier journals, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "archivum-latinitatis-medii-aevi": {
+    "id": "archivum-latinitatis-medii-aevi",
+    "title": "Archivum Latinitatis Medii Aevi (Français)",
+    "description": "Derived from Franziska Heimburger's style for Annales. Histoire, Sciences Sociales",
+    "tags": [
+      "note",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arctic-antarctic-and-alpine-research": {
+    "id": "arctic-antarctic-and-alpine-research",
+    "title": "Arctic, Antarctic, and Alpine Research",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arctic": {
+    "id": "arctic",
+    "title": "Arctic",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arhiv-za-higijenu-rada-i-toksikologiju": {
+    "id": "arhiv-za-higijenu-rada-i-toksikologiju",
+    "title": "Arhiv za higijenu rada i toksikologiju (Archives of Industrial Hygiene and Toxicology)",
+    "description": "The style for Arhiv za higijenu rada i toksikologiju-Archives of Industrial Hygiene and Toxicology, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arkivoc": {
+    "id": "arkivoc",
+    "title": "Arkivoc",
+    "description": "",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "art-history": {
+    "id": "art-history",
+    "title": "Art History",
+    "description": "Art History journal style",
+    "tags": [
+      "note"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "art-libraries-society-of-north-america-arlisna-reviews": {
+    "id": "art-libraries-society-of-north-america-arlisna-reviews",
+    "title": "Art Libraries Society of North America: ARLIS/NA Reviews",
+    "description": "Chicago format with short notes and bibliography",
+    "tags": [
+      "note",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "humanities"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "artery-research": {
+    "id": "artery-research",
+    "title": "Artery Research",
+    "description": "A style for some Elsevier journals, resembles Vancouver style",
+    "tags": [
+      "numeric",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arthritis-and-rheumatism": {
+    "id": "arthritis-and-rheumatism",
+    "title": "Arthritis & Rheumatism",
+    "description": "",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arthropod-systematics-and-phylogeny": {
+    "id": "arthropod-systematics-and-phylogeny",
+    "title": "Arthropod Systematics & Phylogeny",
+    "description": "Arthropod Systematics and Phylogeny Journals style",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arts-university-bournemouth": {
+    "id": "arts-university-bournemouth",
+    "title": "Arts University Bournemouth",
+    "description": "",
+    "tags": [
+      "author-date",
+      "doi-support",
+      "url-required"
+    ],
+    "disciplines": [],
+    "categories": [
+      "journal",
+      "university",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "arzneimitteltherapie": {
+    "id": "arzneimitteltherapie",
+    "title": "Arzneimitteltherapie",
+    "description": "Vancouver style adjusted for the Journal Arzneimitteltherapie",
+    "tags": [
+      "numeric",
+      "url-required"
+    ],
+    "disciplines": [
+      "medicine"
+    ],
+    "categories": [
+      "journal",
+      "book"
+    ],
+    "version": "1.0"
+  },
+  "asa-cssa-sssa": {
+    "id": "asa-cssa-sssa",
+    "title": "American Society of Agronomy, Crop Science Society of America, Soil Science Society of America",
+    "description": "",
+    "tags": [
+      "author-date",
+      "url-required"
+    ],
+    "disciplines": [
+      "sciences"
+    ],
+    "categories": [
+      "book"
+    ],
+    "version": "1.0"
+  }
+}

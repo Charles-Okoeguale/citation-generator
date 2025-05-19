@@ -13,6 +13,13 @@ export type SourceType =
   | 'book'
   | 'article-journal'
   | 'webpage'
+  | 'newspaper'
+  | 'video'
+  | 'podcast'
+  | 'email'
+  | 'software'
+  | 'dataset'
+  | 'artwork'
   | 'paper-conference'
   | 'chapter'
   | 'thesis'
@@ -65,10 +72,11 @@ export type FieldType =
   | 'identifier'
   | 'container'
   | 'select'
+  | 'contributors'
   | 'url';
 
 export type ValidationRule = {
-  type: 'required' | 'pattern' | 'custom';
+  type: 'required' | 'pattern' | 'custom' | 'url';
   message: string;
   validator?: (value: any) => boolean;
   pattern?: RegExp;

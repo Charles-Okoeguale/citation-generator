@@ -7,7 +7,7 @@ import type { CitationOutput, CitationStyle } from '@/lib/citation/types';
 interface EnhancedCitationPreviewProps {
   sourceType: string;
   data: Record<string, any>;
-  selectedStyles: string[];  // Array of style IDs for comparison
+  selectedStyles: string[];  
 }
 
 export function EnhancedCitationPreview({ 
@@ -42,6 +42,7 @@ export function EnhancedCitationPreview({
 
         setCitations(Object.fromEntries(results));
       } catch (err) {
+        console.error('Error generating citation previews:', err);
         setError('Unable to generate citation previews');
       } finally {
         setLoading(false);

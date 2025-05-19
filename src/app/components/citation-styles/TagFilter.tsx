@@ -32,12 +32,12 @@ export function TagFilter({ selectedTags, onTagsChange }: TagFilterProps) {
         {selectedTags.map(tagId => (
           <span
             key={tagId}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-sm"
+            className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-sm"
           >
             {styleTags[tagId].label}
             <button
               onClick={() => toggleTag(tagId)}
-              className="ml-2 text-blue-600 hover:text-blue-800"
+              className="ml-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
             >
               ×
             </button>
@@ -46,12 +46,12 @@ export function TagFilter({ selectedTags, onTagsChange }: TagFilterProps) {
       </div>
 
       {Object.entries(tagCategories).map(([category, label]) => (
-        <div key={category} className="border rounded-lg overflow-hidden">
+        <div key={category} className="border rounded-lg overflow-hidden dark:border-gray-700">
           <button
             onClick={() => setExpandedCategory(
               expandedCategory === category ? null : category
             )}
-            className="w-full px-4 py-2 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center"
+            className="w-full px-4 py-2 text-left bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white flex justify-between items-center"
           >
             <span className="font-medium">{label}</span>
             <span>{expandedCategory === category ? '−' : '+'}</span>
@@ -65,13 +65,13 @@ export function TagFilter({ selectedTags, onTagsChange }: TagFilterProps) {
                   onClick={() => toggleTag(tag.id)}
                   className={`p-2 text-sm rounded-lg text-left transition-colors
                     ${selectedTags.includes(tag.id)
-                      ? 'bg-blue-100 text-blue-800'
-                      : 'bg-gray-50 hover:bg-gray-100'
+                      ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300'
+                      : 'bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200'
                     }`}
                 >
                   <div className="font-medium">{tag.label}</div>
                   {tag.description && (
-                    <div className="text-xs text-gray-600 mt-1">
+                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                       {tag.description}
                     </div>
                   )}

@@ -8,43 +8,63 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  name          String?
-  password      String
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  // Relationships
-  citations     SavedCitation[]
-  settings      UserSettings?
-  sessions      Session[]
+  id          String           @id @default(cuid())
+  email       String           @unique
+  name        String?
+  password    String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  citations   SavedCitation[]
+  sessions    Session[]
+  settings    UserSettings?
+  preferences UserPreferences?
 }
 
 model SavedCitation {
-  id          String   @id @default(cuid())
-  userId      String
-  title       String
-  authors     String[]
-  sourceType  String   // book, article, website, etc.
-  citationData Json    // stores all citation fields
-  style       String   @default("apa")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relationship to User
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  userId       String
+  title        String
+  authors      String[]
+  sourceType   String
+  citationData Json
+  style        String   @default("apa")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model UserSettings {
-  id                String  @id @default(cuid())
-  userId           String  @unique
-  defaultStyle     String  @default("apa")
-  theme            String  @default("light")
-  citationsPerPage Int     @default(10)
+  id               String          @id @default(cuid())
+  userId           String          @unique
+  defaultStyle     String          @default("apa")
+  theme            String          @default("light")
+  citationsPerPage Int             @default(10)
+  favoriteStyles   FavoriteStyle[] // Add this relation
+  recentStyles     String[]        // Add this field
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
 
-  // Relationship to User
-  user             User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+model UserPreferences {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  theme            String   @default("light")
+  defaultStyle     String   @default("apa")
+  citationsPerPage Int      @default(10)
+  favoriteStyles   Json?    @default("[]") // Stored as JSON array
+  recentStyles     String[] @default([])
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FavoriteStyle {
+  id         String       @id @default(cuid())
+  styleId    String
+  useCount   Int          @default(1)
+  lastUsed   DateTime     @default(now())
+  notes      String?
+  settingsId String
+  settings   UserSettings @relation(fields: [settingsId], references: [id], onDelete: Cascade)
+
+  @@unique([settingsId, styleId])
 }
 
 model Session {
@@ -52,7 +72,5 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  
-  // Relationship to User
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

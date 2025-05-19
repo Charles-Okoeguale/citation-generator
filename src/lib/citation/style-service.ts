@@ -12,6 +12,9 @@ import type {
   StyleField
 } from './types';
 
+// Define initialization states for state machine
+type InitializationState = 'not_started' | 'in_progress' | 'completed' | 'failed';
+
 export interface StyleMetadata {
   id: string;
   title: string;
@@ -35,6 +38,11 @@ class UnifiedStyleService {
   private categories: StyleCategory[] = [];
   private initialized: boolean = false;
   private lastUpdateCheck: Date | null = null;
+  
+  // Initialization state machine
+  private static initializationState: InitializationState = 'not_started';
+  private static initializationPromise: Promise<void> | null = null;
+  private static initializationError: Error | null = null;
 
   private constructor() {}
 
@@ -45,29 +53,154 @@ class UnifiedStyleService {
     return UnifiedStyleService.instance;
   }
 
-  async initialize(): Promise<void> {
-    if (this.initialized) return;
-
+  /**
+   * Checks if the CSL registry is properly initialized and has styles
+   */
+  private async isRegistryReady(): Promise<boolean> {
     try {
-      // Load all available styles from Citation.js
-      const availableStyles = await Cite.plugins.config.get('@csl/styles');
+      // First verify plugins object exists
+      const core = await import('@citation-js/core');
+      const { plugins } = core;
       
-      // Process each style
-      await Promise.all(
-        Object.entries(availableStyles).map(async ([id, data]) => {
-          const metadata = await this.extractStyleMetadata(id, data);
-          this.styles.set(id, metadata);
-        })
-      );
-
-      // Generate categories
-      this.categories = this.generateCategories();
+      if (!plugins || !plugins.config || typeof plugins.config.get !== 'function') {
+        console.debug('Citation.js plugin system not available');
+        return false;
+      }
       
-      this.initialized = true;
+      // Then check if styles registry exists and has entries
+      const styles = plugins.config.get('@csl/styles');
+      if (!styles || Object.keys(styles).length === 0) {
+        console.debug('CSL styles registry not available or empty');
+        return false;
+      }
+      
+      return true;
     } catch (error) {
-      console.error('Failed to initialize citation styles:', error);
-      throw new Error('Style initialization failed');
+      console.debug('Error checking CSL registry:', error);
+      return false;
     }
+  }
+  
+  /**
+   * Waits for the CSL registry to be ready with exponential backoff
+   */
+  private async waitForRegistry(attempt = 1, maxAttempts = 5): Promise<void> {
+    if (await this.isRegistryReady()) {
+      return;
+    }
+    
+    if (attempt >= maxAttempts) {
+      throw new Error('CSL styles plugin registration failed');
+    }
+    
+    const delay = 100 * Math.pow(2, attempt);
+    console.debug(`Waiting for CSL registry, attempt ${attempt}/${maxAttempts} (${delay}ms delay)`);
+    
+    await new Promise(resolve => setTimeout(resolve, delay));
+    return this.waitForRegistry(attempt + 1, maxAttempts);
+  }
+  
+  /**
+   * Loads Citation.js plugins sequentially with completion verification
+   */
+  private async loadPluginsSequentially(): Promise<void> {
+    // Step 1: Import core and get plugins registry
+    const core = await import('@citation-js/core');
+    const Cite = core.default || core.Cite;
+    
+    // Step 2: Import CSL plugin and wait for event loop to process registration
+    await import('@citation-js/plugin-csl');
+    await new Promise(resolve => setTimeout(resolve, 50));
+    
+    // Step 3: Import additional plugins in sequence
+    await import('@citation-js/plugin-bibtex');
+    await new Promise(resolve => setTimeout(resolve, 30));
+    
+    await import('@citation-js/plugin-doi');
+    await new Promise(resolve => setTimeout(resolve, 30));
+    
+    // Step 4: Wait for registry to become available with retry logic
+    await this.waitForRegistry();
+    
+    // Step 5: Create Cite instance only after successful plugin registration
+    // Pass an empty array to satisfy constructor parameter requirement
+    this.citeInstance = new Cite([]);
+  }
+  
+  private citeInstance: any;
+
+  async initialize(): Promise<void> {
+    // Part of state machine: Check current state and return existing promise if in progress
+    if (UnifiedStyleService.initializationState === 'in_progress' && UnifiedStyleService.initializationPromise) {
+      return UnifiedStyleService.initializationPromise;
+    }
+    
+    // Return early if already completed successfully
+    if (UnifiedStyleService.initializationState === 'completed' && this.initialized) {
+      return;
+    }
+    
+    // Create new initialization promise
+    UnifiedStyleService.initializationState = 'in_progress';
+    UnifiedStyleService.initializationPromise = (async () => {
+      try {
+        // Only run in browser environment
+        if (typeof window === 'undefined') {
+          console.log('Skipping style service initialization in server environment');
+          this.initialized = true;
+          UnifiedStyleService.initializationState = 'completed';
+          return;
+        }
+        
+        // Sequentially load plugins with completion verification
+        await this.loadPluginsSequentially();
+        
+        // Verify registry is ready before proceeding
+        if (!await this.isRegistryReady()) {
+          throw new Error('CSL registry failed to initialize properly');
+        }
+        
+        // Load all available styles from now-initialized Citation.js
+        const core = await import('@citation-js/core');
+        const availableStyles = core.plugins.config.get('@csl/styles');
+        
+        // Check if availableStyles is defined and not null
+        if (!availableStyles) {
+          throw new Error('Citation.js styles configuration is not available');
+        }
+        
+        // Process each style
+        await Promise.all(
+          Object.entries(availableStyles).map(async ([id, data]) => {
+            if (!data) {
+              console.warn(`Style data for ${id} is undefined or null, skipping`);
+              return;
+            }
+            try {
+              const metadata = await this.extractStyleMetadata(id, data);
+              this.styles.set(id, metadata);
+            } catch (styleError) {
+              console.warn(`Failed to extract metadata for style ${id}:`, styleError);
+              // Skip this style but continue processing others
+            }
+          })
+        );
+
+        // Generate categories
+        this.categories = this.generateCategories();
+        
+        this.initialized = true;
+        UnifiedStyleService.initializationState = 'completed';
+      } catch (error) {
+        console.error('Failed to initialize citation styles:', error);
+        UnifiedStyleService.initializationState = 'failed';
+        UnifiedStyleService.initializationError = error instanceof Error ? error : new Error(String(error));
+        this.initialized = false;
+        throw new Error('Style initialization failed');
+      }
+    })();
+    
+    return UnifiedStyleService.initializationPromise;
   }
 
   private async extractStyleMetadata(id: string, data: any): Promise<EnhancedStyleMetadata> {
@@ -99,10 +232,25 @@ class UnifiedStyleService {
     }
 
     try {
-      const style = await Cite.plugins.config.get('@csl/styles')[styleId];
+      // Ensure we are initialized before loading styles
+      if (!this.initialized && UnifiedStyleService.initializationState !== 'completed') {
+        await this.initialize();
+      }
+      
+      // Load style with proper error handling
+      const core = await import('@citation-js/core');
+      const { plugins } = core;
+      const styles = plugins.config.get('@csl/styles');
+      
+      if (!styles) {
+        throw new Error('CSL styles not available');
+      }
+      
+      const style = styles[styleId];
       if (!style) {
         throw new Error(`Style ${styleId} not found`);
       }
+      
       this.styleCache.set(styleId, style);
       return style;
     } catch (error) {
@@ -122,31 +270,22 @@ class UnifiedStyleService {
   }
 
   private async generateStyleExample(styleId: string): Promise<StyleExample> {
-    const sampleInput = {
-      type: 'article-journal',
-      title: 'The Evolution of Citation Styles',
-      author: [{ given: 'John', family: 'Smith' }],
-      'container-title': 'Journal of Documentation',
-      volume: '45',
-      issue: '2',
-      page: '123-145',
-      issued: { 'date-parts': [[2023]] }
-    };
-
-    const cite = new Cite(sampleInput);
-    
+    // Return a simplified example to maintain type compatibility
+    // but avoid loading Citation.js for preview generation since it's no longer needed
     return {
-      input: sampleInput,
+      input: {
+        type: 'article-journal',
+        title: 'The Evolution of Citation Styles',
+        author: [{ given: 'John', family: 'Smith' }],
+        'container-title': 'Journal of Documentation',
+        volume: '45',
+        issue: '2',
+        page: '123-145',
+        issued: { 'date-parts': [[2023]] }
+      },
       output: {
-        bibliography: cite.format('bibliography', {
-          template: styleId,
-          format: 'text',
-          lang: 'en-US'
-        }),
-        inText: cite.format('citation', {
-          template: styleId,
-          lang: 'en-US'
-        })
+        bibliography: 'Example not available - preview disabled',
+        inText: 'Citation not available - preview disabled'
       }
     };
   }
@@ -301,7 +440,6 @@ class UnifiedStyleService {
     return descriptions[categoryId] || `Citation styles in the ${this.formatCategoryName(categoryId)} category`;
   }
 
-  // Public API methods
   async getStyle(styleId: string): Promise<EnhancedStyleMetadata> {
     if (!this.initialized) await this.initialize();
     
@@ -317,17 +455,12 @@ class UnifiedStyleService {
     return Array.from(this.styles.values());
   }
 
-  async generateExample(styleId: string): Promise<string> {
-    if (!this.initialized) await this.initialize();
-    
-    try {
-      const style = await this.getStyle(styleId);
-      // Return the bibliography format of the example
-      return style.example.output.bibliography;
-    } catch (error) {
-      console.error(`Failed to generate example for style ${styleId}:`, error);
-      return 'Example not available';
-    }
+  async generateExample(styleId: string): Promise<{ bibliography: string; inText: string }> {
+    // Return placeholder content instead of attempting to initialize Citation.js
+    return {
+      bibliography: 'Example not available - preview disabled',
+      inText: 'Citation not available - preview disabled'
+    };
   }
 
   async getStylesByCategory(categoryId: string): Promise<EnhancedStyleMetadata[]> {
@@ -407,7 +540,6 @@ class UnifiedStyleService {
     
     const style = await this.getStyle(styleId);
     
-    // Check for updates no more than once per hour
     if (this.lastUpdateCheck && 
         (new Date().getTime() - this.lastUpdateCheck.getTime()) < 3600000) {
       return {

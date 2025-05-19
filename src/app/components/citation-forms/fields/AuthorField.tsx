@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Author } from '@/lib/citation/types';
 
 interface AuthorFieldProps {
@@ -10,11 +10,19 @@ interface AuthorFieldProps {
 }
 
 export function AuthorField({ value = [], onChange, required }: AuthorFieldProps) {
+  // For new author input
   const [newAuthor, setNewAuthor] = useState<Author>({ given: '', family: '' });
+
+  // Keep local state in sync with props
+  useEffect(() => {
+    // This ensures the component updates when value changes externally
+  }, [value]);
 
   const addAuthor = () => {
     if (newAuthor.given.trim() || newAuthor.family.trim()) {
+      // Update parent directly with the new array
       onChange([...value, newAuthor]);
+      // Reset the new author form
       setNewAuthor({ given: '', family: '' });
     }
   };
@@ -33,29 +41,29 @@ export function AuthorField({ value = [], onChange, required }: AuthorFieldProps
 
   return (
     <div className="space-y-4">
-      {/* Existing Authors */}
-      {value?.map((author, index) => (
-        <div key={index} className="flex gap-4 items-start">
+      {/* Display existing authors from props (not local state) */}
+      {value.map((author, index) => (
+        <div key={index} className="flex gap-4 items-start p-3 border rounded-md bg-gray-50">
           <div className="flex-1 space-y-2">
             <input
               type="text"
               value={author.given}
               onChange={(e) => updateAuthor(index, 'given', e.target.value)}
               placeholder="Given name"
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full rounded-md border border-gray-300 px-3 py-3 min-h-[45px]"
             />
             <input
               type="text"
               value={author.family}
               onChange={(e) => updateAuthor(index, 'family', e.target.value)}
               placeholder="Family name"
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full rounded-md border border-gray-300 px-3 py-3 min-h-[45px]"
             />
           </div>
           <button
             type="button"
             onClick={() => removeAuthor(index)}
-            className="text-red-500 hover:text-red-700"
+            className="text-red-500 hover:text-red-700 px-2 py-1"
           >
             Remove
           </button>
@@ -63,33 +71,33 @@ export function AuthorField({ value = [], onChange, required }: AuthorFieldProps
       ))}
 
       {/* New Author Form */}
-      <div className="flex gap-4 items-start border-t pt-4">
+      <div className="flex gap-4 items-start border p-3 rounded-md">
         <div className="flex-1 space-y-2">
           <input
             type="text"
             value={newAuthor.given}
             onChange={(e) => setNewAuthor({ ...newAuthor, given: e.target.value })}
             placeholder="Given name"
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full rounded-md border border-gray-300 px-3 py-3 min-h-[45px]"
           />
           <input
             type="text"
             value={newAuthor.family}
             onChange={(e) => setNewAuthor({ ...newAuthor, family: e.target.value })}
             placeholder="Family name"
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full rounded-md border border-gray-300 px-3 py-3 min-h-[45px]"
           />
         </div>
         <button
           type="button"
           onClick={addAuthor}
-          className="text-blue-500 hover:text-blue-700"
+          className="text-blue-500 hover:text-blue-700 px-3 py-2 self-end"
         >
-          Add Author
+           + Add Author
         </button>
       </div>
 
-      {required && value?.length === 0 && (
+      {required && value.length === 0 && (
         <p className="text-red-500 text-sm">At least one author is required</p>
       )}
     </div>

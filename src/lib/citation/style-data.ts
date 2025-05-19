@@ -2,33 +2,48 @@ import { loadStylesClient } from './style-loader';
 import { StyleMetadata } from './style-service';
 
 // Initially use fallback styles
-let stylesCache: Record<string, StyleMetadata> = {
+const defaultStyles: Record<string, StyleMetadata> = {
   'apa': {
     id: 'apa',
-    title: 'APA',
-    description: 'American Psychological Association',
+    title: 'APA (7th edition)',
+    description: 'The American Psychological Association 7th edition citation style.',
     tags: ['author-date'],
-    disciplines: ['psychology'],
+    disciplines: ['psychology', 'social-sciences'],
     categories: ['academic'],
     version: '7'
   },
+  'mla': {
+    id: 'mla',
+    title: 'MLA (9th edition)',
+    description: 'Modern Language Association 9th edition style.',
+    tags: ['humanities'],
+    disciplines: ['humanities', 'literature'],
+    categories: ['academic'],
+    version: '9'
+  }
+  // Add a few more default styles
 };
 
 // Export a function to get styles with dynamic loading
+let stylesCache: Record<string, StyleMetadata> = { ...defaultStyles };
+let stylesLoaded = false;
+
 export async function getStyles(): Promise<Record<string, StyleMetadata>> {
-  if (Object.keys(stylesCache).length <= 10) {
+  if (!stylesLoaded) {
     try {
-      const loadedStyles = await loadStylesClient();
-      stylesCache = loadedStyles;
+      const response = await fetch('/api/styles');
+      if (response.ok) {
+        const data = await response.json();
+        stylesCache = data;
+        stylesLoaded = true;
+      }
     } catch (error) {
-      console.error('Error loading styles:', error);
+      console.error('Error fetching styles:', error);
     }
   }
   return stylesCache;
 }
 
-// For immediate use (will be updated when getStyles is called)
-export const styles = stylesCache;
 
 // Helper function to get all available disciplines
 export function getAllDisciplines(): string[] {
@@ -61,3 +76,5 @@ export function getStylesByTag(tag: string): StyleMetadata[] {
     style.tags.includes(tag)
   );
 }
+
+export const styles = stylesCache;
