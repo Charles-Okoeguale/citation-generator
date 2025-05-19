@@ -89,7 +89,7 @@ export default function CitationExport({ citations, selectedStyle }: CitationExp
               className={`
                 p-3 rounded-lg border transition-colors
                 ${selectedFormat === format.id
-                  ? 'border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/20 dark:text-blue-300'
+                  ? 'border-[rgb(200,75,110)] bg-[rgba(200,75,110,0.1)] text-[rgb(200,75,110)] dark:border-[rgb(200,75,110)] dark:bg-[rgba(200,75,110,0.15)] dark:text-[rgb(220,120,150)]' 
                   : 'border-gray-200 hover:border-gray-300 dark:border-gray-600 dark:hover:border-gray-500 dark:text-gray-300'
                 }
               `}
@@ -105,7 +105,7 @@ export default function CitationExport({ citations, selectedStyle }: CitationExp
         <button
           onClick={handleExport}
           disabled={exporting || citations.length === 0}
-          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-700"
+          className="w-full py-2 px-4 bg-[rgb(200,75,110)] hover:bg-[rgb(180,65,100)] text-white rounded-md transition-colors duration-200 disabled:opacity-50 dark:bg-[rgb(200,75,110)] dark:hover:bg-[rgb(180,65,100)]"
         >
           {exporting ? 'Exporting...' : 'Export Citation'}
         </button>

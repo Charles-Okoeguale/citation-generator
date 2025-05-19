@@ -115,7 +115,7 @@ export function DateField({ value, onChange, required }: DateFieldProps) {
         </div>
         <input
           type="date"
-          value=""
+          defaultValue="" 
           className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-white"
           required={required}
         />
@@ -130,7 +130,7 @@ export function DateField({ value, onChange, required }: DateFieldProps) {
           name="month"
           onChange={handleMonthYearChange}
           value={getMonthValue()}
-          className="flex-1 px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+          className="flex-1 px-3 py-2 border rounded-md focus:border-[rgb(200,75,110)] focus:ring-[rgb(200,75,110)] dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         >
           <option value="">Select Month</option>
           {monthNames.map((month, i) => (
@@ -144,7 +144,7 @@ export function DateField({ value, onChange, required }: DateFieldProps) {
           name="year"
           onChange={handleMonthYearChange}
           value={getYearValue()}
-          className="flex-1 px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+          className="flex-1 px-3 py-2 border rounded-md focus:border-[rgb(200,75,110)] focus:ring-[rgb(200,75,110)] dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         >
           <option value="">Select Year</option>
           {years.map(year => (
@@ -159,7 +159,7 @@ export function DateField({ value, onChange, required }: DateFieldProps) {
         type="date"
         value={inputValue}
         onChange={handleDateChange}
-        className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+        className="w-full px-3 py-2 border rounded-md focus:border-[rgb(200,75,110)] focus:ring-[rgb(200,75,110)] dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         required={required}
       />
     </div>

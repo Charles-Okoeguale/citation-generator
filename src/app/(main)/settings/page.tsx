@@ -118,7 +118,7 @@ export default function SettingsPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8 text-center">
-        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
+        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[rgb(200,75,110)] border-r-transparent"></div>
         <p className="mt-4 text-gray-600 dark:text-gray-400">Loading settings...</p>
       </div>
     );
@@ -147,7 +147,7 @@ export default function SettingsPage() {
                 id="citationsPerPage"
                 value={citationsPerPage}
                 onChange={(e) => setCitationsPerPage(Number(e.target.value))}
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[rgb(200,75,110)] focus:ring-[rgb(200,75,110)] dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               >
                 {[5, 10, 15, 20, 25, 50].map((value) => (
                   <option key={value} value={value}>
@@ -169,9 +169,9 @@ export default function SettingsPage() {
             <button
               onClick={() => setTheme('light')}
               className={`
-                flex items-center space-x-2 p-4 rounded-md border transition-colors
+                flex items-center space-x-2 p-4 rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-[rgb(200,75,110)] focus:ring-opacity-50
                 ${theme === 'light' 
-                  ? 'border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300' 
+                  ? 'border-[rgb(200,75,110)] bg-[rgba(200,75,110,0.1)] text-[rgb(200,75,110)] dark:border-[rgb(200,75,110)] dark:bg-[rgba(200,75,110,0.1)] dark:text-[rgb(220,120,150)]' 
                   : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-300'
                 }
               `}
@@ -182,9 +182,9 @@ export default function SettingsPage() {
             <button
               onClick={() => setTheme('dark')}
               className={`
-                flex items-center space-x-2 p-4 rounded-md border transition-colors
+                flex items-center space-x-2 p-4 rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-[rgb(200,75,110)] focus:ring-opacity-50
                 ${theme === 'dark' 
-                  ? 'border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300' 
+                  ? 'border-[rgb(200,75,110)] bg-[rgba(200,75,110,0.1)] text-[rgb(200,75,110)] dark:border-[rgb(200,75,110)] dark:bg-[rgba(200,75,110,0.15)] dark:text-[rgb(220,120,150)]' 
                   : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-300'
                 }
               `}
@@ -212,7 +212,7 @@ export default function SettingsPage() {
           <button
             onClick={saveSettings}
             disabled={saving}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+            className="px-4 py-2 bg-[rgb(200,75,110)] text-white rounded-md hover:bg-[rgb(180,65,100)] focus:outline-none focus:ring-2 focus:ring-[rgb(200,75,110)] focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
             {saving ? (
               <>

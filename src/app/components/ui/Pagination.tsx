@@ -80,7 +80,7 @@ export function Pagination({
             <select
               value={itemsPerPage}
               onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-              className="block w-20 py-1 px-2 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:border-brand focus:ring-brand dark:focus:ring-brand-light"
+              className="block w-20 py-1 px-2 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:border-[rgb(200,75,110)] focus:ring-[rgb(200,75,110)] dark:focus:ring-[rgb(220,120,150)]"
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -108,7 +108,7 @@ export function Pagination({
                 aria-current={page === currentPage ? 'page' : undefined}
                 className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                   page === currentPage
-                    ? 'z-10 bg-brand dark:bg-brand text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:focus-visible:outline-brand-light'
+                    ? 'z-10 bg-[rgb(200,75,110)] dark:bg-[rgb(200,75,110)] text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(200,75,110)] dark:focus-visible:outline-[rgb(220,120,150)]'
                     : 'text-gray-900 dark:text-gray-200 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0'
                 }`}
               >
