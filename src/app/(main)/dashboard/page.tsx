@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { usePagination } from '@/lib/hooks/use-pagination';
 import { Pagination } from '@/app/components/ui/Pagination';
@@ -20,7 +19,6 @@ interface Citation {
 
 // Client component version of the dashboard page
 export default function DashboardPage() {
-  const router = useRouter();
   const { data: session, status } = useSession();
   const [savedCitations, setSavedCitations] = useState<Citation[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,17 +30,16 @@ export default function DashboardPage() {
   });
 
   useEffect(() => {
-    // Check authentication
-    if (status === 'unauthenticated') {
-      router.push('/login');
-      return;
-    }
-
-    // Fetch data if authenticated
-    if (status === 'authenticated' && session?.user) {
+    // Only fetch data if authenticated
+    if (status === 'authenticated') {
       fetchCitations();
     }
-  }, [status, session, router]);
+    
+    // Update loading state based on authentication status
+    if (status !== 'loading') {
+      setLoading(false);
+    }
+  }, [status]);
 
   async function fetchCitations() {
     try {

@@ -31,9 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
-        {/* Dark mode script - executed before React hydration */}
+        {/* Dark mode script - executed before React hydration with light as default */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -43,13 +43,7 @@ export default function RootLayout({
                 if (localStorage.getItem('theme') === 'dark') {
                   isDarkMode = true;
                 } 
-                // Then check system preference if not set in localStorage
-                else if (localStorage.getItem('theme') === null && 
-                         window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                  isDarkMode = true;
-                }
-
-                // Apply the correct theme class
+                // Apply the correct theme class - default to light mode
                 if (isDarkMode) {
                   document.documentElement.classList.add('dark');
                 } else {
