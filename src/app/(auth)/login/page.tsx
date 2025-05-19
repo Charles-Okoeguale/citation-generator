@@ -72,7 +72,7 @@ export default function LoginPage() {
                     {...register('email')}
                     type="email"
                     autoComplete="email"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-brand focus:border-brand sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     placeholder="you@example.com"
                   />
                   {errors.email && (
@@ -90,7 +90,7 @@ export default function LoginPage() {
                     {...register('password')}
                     type="password"
                     autoComplete="current-password"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-brand focus:border-brand sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     placeholder="••••••••"
                   />
                   {errors.password && (
@@ -103,7 +103,7 @@ export default function LoginPage() {
                 <div className="text-sm">
                   <Link 
                     href="/forgot-password" 
-                    className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                    className="font-medium text-brand hover:text-brand-dark dark:text-brand-light dark:hover:text-brand-light"
                   >
                     Forgot your password?
                   </Link>
@@ -114,7 +114,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand hover:bg-brand-dark dark:bg-brand dark:hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <div className="flex items-center">
@@ -146,7 +146,7 @@ export default function LoginPage() {
               <div className="mt-6">
                 <Link
                   href="/register"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:text-indigo-300 dark:bg-indigo-900/30 dark:hover:bg-indigo-900/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-brand bg-accent hover:bg-brand/10 dark:text-brand-light dark:bg-accent dark:hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand dark:focus:ring-offset-gray-800"
                 >
                   Create an account
                 </Link>
@@ -158,7 +158,7 @@ export default function LoginPage() {
 
       {/* Right side - Image */}
       <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
-        <div className="absolute inset-0 bg-indigo-600 opacity-90"></div>
+        <div className="absolute inset-0 bg-brand opacity-90"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-white z-10">
           <h2 className="text-4xl font-bold mb-6">Streamline Your Citations</h2>
           <p className="text-xl max-w-md text-center mb-8">Generate perfect citations in APA, MLA, Chicago and 200+ other styles in seconds.</p>
@@ -168,7 +168,7 @@ export default function LoginPage() {
             </svg>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-purple-800 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark mix-blend-multiply"></div>
       </div>
     </div>
   );

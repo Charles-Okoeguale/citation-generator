@@ -91,10 +91,10 @@ export function StyleGrid({
         {pagination.currentItems.map((style: any) => (
           <div
             key={style.id}
-            className={`p-4 border rounded-lg cursor-pointer transition-colors relative ${
+            className={`p-4 border rounded-lg cursor-pointer transition-all hover:shadow-md relative ${
               currentStyle === style.id
-                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'
-                : 'border-gray-200 dark:border-gray-700 dark:bg-gray-800'
+                ? 'border-brand bg-brand/5 dark:bg-brand/20 dark:border-brand-light'
+                : 'border-gray-200 dark:border-gray-700 dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
             }`}
             onClick={() => onStyleSelect(style.id)}
           >
@@ -114,19 +114,31 @@ export function StyleGrid({
               </button>
             </div>
             
-            <h3 className="font-medium pr-16 text-gray-900 dark:text-white">{style.title}</h3>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              {style.categories.join(', ')}
-            </div>
-            <div className="mt-2 flex flex-wrap gap-1">
-              {style.tags?.map((tagId: string) => (
-                <span
-                  key={tagId}
-                  className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
-                >
-                  {/* {styleTags[tagId].label} */}
-                </span>
-              ))}
+            <div className="flex flex-col h-full">
+              <h3 className="font-semibold pr-12 text-gray-900 dark:text-white text-base sm:text-lg truncate">{style.title}</h3>
+              <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 truncate">
+                {style.id}
+              </div>
+              
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                {style.categories && style.categories.length > 0 ? style.categories.join(', ') : 'General'}
+              </div>
+              
+              <div className="mt-3 flex flex-wrap gap-1 pt-2">
+                {style.tags?.slice(0, 3).map((tagId: string) => (
+                  <span
+                    key={tagId}
+                    className="px-2 py-0.5 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                  >
+                    {tagId}
+                  </span>
+                ))}
+                {style.tags && style.tags.length > 3 && (
+                  <span className="px-2 py-0.5 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                    +{style.tags.length - 3} more
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         ))}

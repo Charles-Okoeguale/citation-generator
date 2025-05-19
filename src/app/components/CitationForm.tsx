@@ -217,7 +217,7 @@ export function CitationForm() {
             <button
               type="submit"
               disabled={isGenerating}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-700 dark:hover:bg-blue-800"
+              className="px-4 py-2 bg-brand text-white rounded-md hover:bg-brand-dark disabled:opacity-50 dark:bg-brand dark:hover:bg-brand-dark"
             >
               {isGenerating ? 'Generating...' : 'Generate Citation'}
             </button>

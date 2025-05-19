@@ -67,7 +67,7 @@ export function StylePreferences({ onStyleSelect, styles }: StylePreferencesProp
                   </button>
                   <button
                     onClick={() => setDefaultStyle(style.styleId)}
-                    className="text-green-600 hover:text-green-800 dark:text-green-500 dark:hover:text-green-400 text-sm"
+                    className="text-brand hover:text-brand-dark dark:text-brand-light dark:hover:text-brand-light text-sm"
                   >
                     Set as Default
                   </button>

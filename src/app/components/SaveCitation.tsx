@@ -56,7 +56,7 @@ export function SaveCitation({ citation }: SaveCitationProps) {
     <button
       onClick={handleSave}
       disabled={isSaving}
-      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-indigo-700 dark:hover:bg-indigo-800 dark:focus:ring-indigo-400 dark:focus:ring-offset-gray-800"
+      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-brand hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand disabled:opacity-50 disabled:cursor-not-allowed dark:bg-brand dark:hover:bg-brand-dark dark:focus:ring-brand-light dark:focus:ring-offset-gray-800"
     >
       {isSaving ? (
         <>

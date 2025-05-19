@@ -92,7 +92,7 @@ export function Navbar() {
                     {active && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 rounded-md bg-blue-50 dark:bg-gray-700 -z-10"
+                        className="absolute inset-0 rounded-md bg-brand-light/10 dark:bg-brand/30 -z-10"
                         transition={{ type: "spring", duration: 0.5 }}
                       />
                     )}
@@ -100,7 +100,7 @@ export function Navbar() {
                     {active && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand dark:bg-brand-light"
                       />
                     )}
                   </Link>
@@ -155,7 +155,7 @@ export function Navbar() {
                 {active && (
                   <motion.div
                     layoutId="activeMobileTab"
-                    className="absolute inset-0 rounded-md bg-blue-50 dark:bg-gray-700 -z-10"
+                    className="absolute inset-0 rounded-md bg-brand-light/10 dark:bg-brand/30 -z-10"
                     transition={{ type: "spring", duration: 0.5 }}
                   />
                 )}
@@ -173,7 +173,7 @@ export function Navbar() {
             {isActive('/settings') && (
               <motion.div
                 layoutId="activeMobileTab"
-                className="absolute inset-0 rounded-md bg-blue-50 dark:bg-gray-700 -z-10"
+                className="absolute inset-0 rounded-md bg-brand-light/10 dark:bg-brand/30 -z-10"
                 transition={{ type: "spring", duration: 0.5 }}
               />
             )}

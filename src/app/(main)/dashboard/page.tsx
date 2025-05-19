@@ -91,7 +91,7 @@ export default function DashboardPage() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">My Citations</h1>
         <Link
           href="/new-citation"
-          className="bg-indigo-600 dark:bg-indigo-700 text-white px-4 py-2 rounded-md hover:bg-indigo-700 dark:hover:bg-indigo-800 transition-colors"
+          className="bg-brand dark:bg-brand text-white px-4 py-2 rounded-md hover:bg-brand-dark dark:hover:bg-brand-dark transition-colors"
         >
           Create New Citation
         </Link>
@@ -106,7 +106,7 @@ export default function DashboardPage() {
           <div className="mt-6">
             <Link
               href="/new-citation"
-              className="inline-flex items-center rounded-md bg-indigo-600 dark:bg-indigo-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 dark:hover:bg-indigo-600"
+              className="inline-flex items-center rounded-md bg-brand dark:bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark dark:hover:bg-brand-light"
             >
               Create your first citation
             </Link>
@@ -131,8 +131,8 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex space-x-3">
                     <Link
-                      href={`/citations/${citation.id}`}
-                      className="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm font-medium"
+                      href={`/citation-styles/${citation.id}`}
+                      className="text-brand hover:text-brand-dark dark:text-brand-light dark:hover:text-brand-light text-sm font-medium"
                     >
                       Edit
                     </Link>
@@ -170,10 +170,10 @@ export default function DashboardPage() {
 
       <div className="mt-8">
         <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Link
             href="/settings"
-            className="p-4 bg-white dark:bg-gray-800 shadow dark:shadow-gray-900/50 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            className="flex flex-col p-4 bg-white dark:bg-gray-800 shadow dark:shadow-gray-900/50 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-l-4 border-brand dark:border-brand"
           >
             <h3 className="font-medium text-gray-900 dark:text-white">Settings</h3>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
@@ -182,7 +182,7 @@ export default function DashboardPage() {
           </Link>
           <Link
             href="/citation-styles"
-            className="p-4 bg-white dark:bg-gray-800 shadow dark:shadow-gray-900/50 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            className="flex flex-col p-4 bg-white dark:bg-gray-800 shadow dark:shadow-gray-900/50 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-l-4 border-brand dark:border-brand"
           >
             <h3 className="font-medium text-gray-900 dark:text-white">Citation Styles</h3>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">

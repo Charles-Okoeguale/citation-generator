@@ -78,7 +78,7 @@ export default function RegisterPage() {
                 <input
                   {...register('name')}
                   type="text"
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-brand focus:ring-brand dark:focus:border-brand-light dark:focus:ring-brand-light dark:bg-gray-700 dark:text-white"
                   placeholder="John Doe"
                 />
                 {errors.name && (
@@ -93,7 +93,7 @@ export default function RegisterPage() {
                 <input
                   {...register('email')}
                   type="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-brand focus:ring-brand dark:focus:border-brand-light dark:focus:ring-brand-light dark:bg-gray-700 dark:text-white"
                   placeholder="you@example.com"
                 />
                 {errors.email && (
@@ -108,7 +108,7 @@ export default function RegisterPage() {
                 <input
                   {...register('password')}
                   type="password"
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-brand focus:ring-brand dark:focus:border-brand-light dark:focus:ring-brand-light dark:bg-gray-700 dark:text-white"
                 />
                 {errors.password && (
                   <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.password.message}</p>
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                 <input
                   {...register('confirmPassword')}
                   type="password"
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 dark:bg-gray-700 dark:text-white"
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-brand focus:ring-brand dark:focus:border-brand-light dark:focus:ring-brand-light dark:bg-gray-700 dark:text-white"
                 />
                 {errors.confirmPassword && (
                   <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.confirmPassword.message}</p>
@@ -132,7 +132,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand hover:bg-brand-dark dark:bg-brand dark:hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand dark:focus:ring-offset-gray-800"
               >
                 {isLoading ? 'Creating account...' : 'Sign up'}
               </button>
@@ -141,7 +141,7 @@ export default function RegisterPage() {
             <div className="mt-6 text-center text-sm">
               <p className="text-gray-600 dark:text-gray-300">
                 Already have an account?{' '}
-                <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                <Link href="/login" className="font-medium text-brand hover:text-brand-dark dark:text-brand-light dark:hover:text-brand-light">
                   Sign in
                 </Link>
               </p>
@@ -152,7 +152,7 @@ export default function RegisterPage() {
 
       {/* Right side - Image */}
       <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
-        <div className="absolute inset-0 bg-indigo-600 opacity-90"></div>
+        <div className="absolute inset-0 bg-brand opacity-90"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-white z-10">
           <h2 className="text-4xl font-bold mb-6">Format Citations Easily</h2>
           <p className="text-xl max-w-md text-center mb-8">Join thousands of students and researchers who save time with our powerful citation tools.</p>
@@ -162,7 +162,7 @@ export default function RegisterPage() {
             </svg>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-purple-800 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark mix-blend-multiply"></div>
       </div>
     </div>
   );
