@@ -26,7 +26,7 @@ async function fetchStyles() {
   
   const writer = fs.createWriteStream(TEMP_ZIP);
   response.data.pipe(writer);
-  await new Promise<void>((resolve, reject) => {
+  await new Promise((resolve, reject) => {
     writer.on('finish', () => resolve());
     writer.on('error', reject);
   });
@@ -38,7 +38,7 @@ async function fetchStyles() {
   const extractedDir = path.join(process.cwd(), 'styles-master');
   const files = fs.readdirSync(extractedDir).filter(file => file.endsWith('.csl'));
   
-  let stylesData : any = {};
+  let stylesData = {};
   
   for (const file of files.slice(0, 250)) { 
     try {
@@ -86,7 +86,7 @@ async function fetchStyles() {
   console.log(`Done! Processed ${Object.keys(stylesData).length} styles.`);
 }
 
-function inferTags(content: string | string[]) {
+function inferTags(content) {
   const tags = [];
   
   if (content.includes('citation-format="author-date"')) tags.push('author-date');
@@ -98,7 +98,7 @@ function inferTags(content: string | string[]) {
   return tags;
 }
 
-function inferDisciplines(content: string | string[]) {
+function inferDisciplines(content) {
   const disciplines = [];
   
   if (content.includes('psychology') || content.includes('behavioral')) {
@@ -120,7 +120,7 @@ function inferDisciplines(content: string | string[]) {
   return disciplines;
 }
 
-function inferCategories(content: string | string[]) {
+function inferCategories(content) {
   const categories = [];
   
   if (content.includes('journal')) categories.push('journal');
@@ -130,4 +130,4 @@ function inferCategories(content: string | string[]) {
   return categories;
 }
 
-fetchStyles().catch(console.error);
+fetchStyles().catch(console.error); 

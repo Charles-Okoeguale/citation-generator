@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "fetch-styles": "ts-node scripts/fetch-csl-styles.ts",
+    "fetch-styles": "node scripts/fetch-styles.js",
     "dev": "next dev",
     "build": "npm run fetch-styles && next build",
     "start": "next start",
